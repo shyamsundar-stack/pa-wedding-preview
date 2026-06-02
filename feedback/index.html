@@ -148,7 +148,7 @@
     <!-- FormSubmit config -->
     <input type="hidden" name="_subject" value="Wedding website feedback — Priyanka & Aravind">
     <input type="text" name="_honey" style="display:none">
-    <button type="submit" class="btn btn-primary submit">Send to the couple</button>
+    <button type="submit" class="btn btn-primary submit">Send my responses</button>
     <div class="err" id="err" style="display:none;"></div>
   </form>
 
@@ -208,10 +208,10 @@
       if (!res.ok) throw new Error('bad status');
       document.querySelector('.card').innerHTML =
         '<div class="done"><h2>Thank you &#10022;</h2><p style="font-style:italic;color:var(--ink-soft);margin-top:10px;">' +
-        'Your details are on their way to the couple. We\'ll use them to finish the site.</p></div>';
+        'Your responses have been received. We\'ll use them to finish the site.</p></div>';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (_) {
-      btn.textContent = 'Send to the couple'; btn.disabled = false;
+      btn.textContent = 'Send my responses'; btn.disabled = false;
       err.style.display = 'block';
       err.innerHTML = 'Hmm, that didn\'t send. Please try again, or email us directly at ' + FORM_EMAIL + '.';
     }
