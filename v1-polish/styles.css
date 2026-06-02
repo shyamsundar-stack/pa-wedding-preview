@@ -30,7 +30,7 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;scroll-padding-top:84px;}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:hidden;}
 body{
   font-family:var(--body);color:var(--ink);background:var(--ivory);
   font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;
