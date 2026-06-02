@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Share your feedback · Priyanka & Aravind</title>
+<meta name="description" content="Help us finish the wedding website — feedback & details for Priyanka & Aravind.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ---- feedback-page specifics (reuses the site's Vetiver & Blush system) ---- */
+  body{background:
+    radial-gradient(60% 40% at 80% 0%,rgba(233,201,188,.35),transparent 60%),
+    radial-gradient(50% 40% at 5% 100%,rgba(140,154,126,.2),transparent 60%),var(--ivory);}
+  .fb-wrap{max-width:760px;margin:0 auto;padding:72px 24px 100px;}
+  .fb-head{text-align:center;margin-bottom:14px;}
+  .fb-head .eyebrow{display:block;margin-bottom:16px;color:var(--sage-deep);}
+  .fb-head h1{font-family:var(--serif);font-weight:400;color:var(--sage-deep);
+    font-size:clamp(40px,7vw,68px);line-height:1;}
+  .fb-head .amp{font-style:italic;color:var(--terra);}
+  .fb-head p{font-style:italic;color:var(--ink-soft);max-width:48ch;margin:16px auto 0;}
+  .card{background:var(--ivory-2);border:1px solid var(--line);border-radius:18px;
+    padding:clamp(26px,5vw,44px);box-shadow:var(--shadow);margin-top:34px;}
+  .grp{margin-bottom:34px;}
+  .grp:last-of-type{margin-bottom:8px;}
+  .grp h2{font-family:var(--serif);font-weight:400;font-size:24px;color:var(--sage-deep);
+    margin-bottom:4px;}
+  .grp .gnote{font-style:italic;color:var(--ink-soft);font-size:14px;margin-bottom:18px;}
+  .grp-rule{height:1px;background:var(--line);margin:0 0 26px;}
+  .opt-row{display:grid;grid-template-columns:1fr;gap:10px;}
+  .opt{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;cursor:pointer;transition:.2s;background:var(--ivory);}
+  .opt:hover{border-color:var(--sage);}
+  .opt input{margin-top:4px;accent-color:var(--terra);}
+  .opt b{font-family:var(--label);text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--clove);}
+  .opt span{display:block;font-size:14px;color:var(--ink-soft);margin-top:2px;}
+  .opt input:checked ~ div b{color:var(--terra);}
+  /* recorder */
+  .rec{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--ivory);
+    border:1px dashed var(--line);border-radius:14px;padding:18px;}
+  .rec button{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.16em;
+    font-size:11px;padding:11px 18px;border-radius:30px;border:1px solid var(--terra);background:var(--terra);
+    color:#fff;cursor:pointer;transition:.2s;}
+  .rec button.ghost{background:transparent;color:var(--terra);}
+  .rec button:disabled{opacity:.4;cursor:not-allowed;}
+  .rec .dot{width:10px;height:10px;border-radius:50%;background:#c0392b;display:none;}
+  .rec.recording .dot{display:inline-block;animation:rp 1s infinite;}
+  @keyframes rp{50%{opacity:.3;}}
+  .rec .time{font-family:var(--label);letter-spacing:.1em;font-size:13px;color:var(--clove);min-width:42px;}
+  .rec audio{height:38px;}
+  .rec .hint{font-size:12.5px;color:var(--ink-soft);width:100%;}
+  .submit{width:100%;justify-content:center;margin-top:8px;}
+  .done{text-align:center;padding:30px 10px;}
+  .done h2{font-family:var(--serif);font-size:34px;color:var(--sage-deep);}
+  .err{color:var(--terra-deep);font-size:13px;margin-top:10px;text-align:center;}
+  .fb-foot{text-align:center;margin-top:28px;font-family:var(--label);text-transform:uppercase;
+    letter-spacing:.3em;font-size:11px;color:var(--sage);}
+</style>
+</head>
+<body>
+<div class="fb-wrap">
+  <div class="fb-head">
+    <span class="eyebrow">Priyanka <span style="color:var(--terra)">&#10022;</span> Aravind</span>
+    <h1>A little<span class="amp"> help</span> from you</h1>
+    <p>A few details and your thoughts so we can finish the website beautifully. Nothing is mandatory — share what you can. You can even leave a voice note at the end.</p>
+  </div>
+
+  <form id="fb" class="card" novalidate>
+    <!-- which design -->
+    <div class="grp">
+      <h2>1 · Which design feels most “you”?</h2>
+      <div class="gnote">We made three. Pick a favourite (open each link we shared).</div>
+      <div class="opt-row">
+        <label class="opt"><input type="radio" name="Design choice" value="V1 — Polish"><div><b>V1 · Polish</b><span>Clean & refined, subtle motion.</span></div></label>
+        <label class="opt"><input type="radio" name="Design choice" value="V2 — Signature"><div><b>V2 · Signature</b><span>Light-aware hero, self-drawing kolam, scroll-lit timeline. (Our recommendation.)</span></div></label>
+        <label class="opt"><input type="radio" name="Design choice" value="V3 — Cinematic"><div><b>V3 · Cinematic</b><span>Everything in V2 + a “house-lights” intro and ambient music.</span></div></label>
+      </div>
+      <div class="field" style="margin-top:16px;"><label>Why? Anything you'd change</label><textarea name="Design notes" rows="2" placeholder="e.g. love V2 but want V3's intro, no music…"></textarea></div>
+    </div>
+    <div class="grp-rule"></div>
+
+    <!-- families -->
+    <div class="grp">
+      <h2>2 · Families</h2>
+      <div class="gnote">How you'd like everyone named on the site.</div>
+      <div class="field two"><div><label>Bride's parents</label><input name="Bride parents" placeholder="Mr & Mrs …"></div>
+        <div><label>Groom's parents</label><input name="Groom parents" placeholder="Mr & Mrs …"></div></div>
+      <div class="field"><label>Siblings / family to mention (optional)</label><input name="Siblings family" placeholder="names & relations"></div>
+    </div>
+    <div class="grp-rule"></div>
+
+    <!-- bios -->
+    <div class="grp">
+      <h2>3 · About the couple</h2>
+      <div class="gnote">Short and warm — a line or two each.</div>
+      <div class="field"><label>Dr. Priyanka — qualifications, hospital/clinic, specialisation</label><textarea name="Priyanka bio" rows="3" placeholder="e.g. MBBS, MS (OBG); Consultant at … ; how she'd like to be introduced"></textarea></div>
+      <div class="field"><label>Aravind — anything to add beyond Modern Stage Craft?</label><textarea name="Aravind bio" rows="2" placeholder="optional"></textarea></div>
+      <div class="field"><label>How you met / your story (a few lines)</label><textarea name="Our story" rows="3" placeholder="We'll shape it beautifully — just the gist is perfect."></textarea></div>
+    </div>
+    <div class="grp-rule"></div>
+
+    <!-- events -->
+    <div class="grp">
+      <h2>4 · Events</h2>
+      <div class="gnote">We currently show: Reception — Sat 11 July, 6:30 PM · Muhurtham — Sun 12 July, 7:00 AM (MRC, Chennai).</div>
+      <div class="field"><label>Anything to correct, or other events to add?</label><textarea name="Events corrections" rows="2" placeholder="timings, additional functions, exact muhurtham time…"></textarea></div>
+      <div class="field two"><div><label>RSVP-by date</label><input name="RSVP by date" placeholder="e.g. 30 June 2026"></div>
+        <div><label>Dress code tweaks?</label><input name="Dress code" placeholder="Reception: casual · Muhurtham: traditional"></div></div>
+    </div>
+    <div class="grp-rule"></div>
+
+    <!-- logistics -->
+    <div class="grp">
+      <h2>5 · Links & logistics</h2>
+      <div class="field"><label>Live-stream platform & link (if known)</label><input name="Live stream" placeholder="YouTube / Zoom link, or 'decide later'"></div>
+      <div class="field"><label>Give-Back cause name & donation link</label><input name="Give back cause" placeholder="the cause + URL / UPI"></div>
+      <div class="field"><label>Recommended hotels nearby (for outstation guests)</label><textarea name="Hotels" rows="2" placeholder="names / area"></textarea></div>
+      <div class="field"><label>Contact numbers (groom side · bride side · coordinator)</label><textarea name="Contacts" rows="2" placeholder="Name — +91 …"></textarea></div>
+    </div>
+    <div class="grp-rule"></div>
+
+    <!-- photos -->
+    <div class="grp">
+      <h2>6 · Photos</h2>
+      <div class="field"><label>When will pre-wedding photos be ready, and how will you share them?</label><input name="Photos" placeholder="e.g. by 20 June, via Google Drive"></div>
+    </div>
+    <div class="grp-rule"></div>
+
+    <!-- open + voice -->
+    <div class="grp">
+      <h2>7 · Anything else?</h2>
+      <div class="field"><label>Open feedback — likes, dislikes, wishes</label><textarea name="Open feedback" rows="3" placeholder="Tell us anything."></textarea></div>
+      <label style="display:block;font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.18em;font-size:10.5px;color:var(--clove);margin:6px 0 8px;">Or leave a voice note</label>
+      <div class="rec" id="rec">
+        <span class="dot"></span>
+        <button type="button" id="recBtn">Record</button>
+        <button type="button" id="stopBtn" class="ghost" disabled>Stop</button>
+        <span class="time" id="recTime">0:00</span>
+        <audio id="recAudio" controls style="display:none;"></audio>
+        <button type="button" id="redoBtn" class="ghost" style="display:none;">Re-record</button>
+        <a id="dlBtn" class="ghost" download="voice-note.webm" style="display:none;text-decoration:none;border:1px solid var(--sage);color:var(--sage-deep);padding:11px 18px;border-radius:30px;font-family:var(--label);text-transform:uppercase;letter-spacing:.16em;font-size:11px;">Download</a>
+        <span class="hint">Tap Record and speak. (If recording isn't supported on your device, use Download to save it and send it to us on WhatsApp.)</span>
+      </div>
+    </div>
+
+    <!-- contact of submitter -->
+    <div class="field"><label>Your name (so we know who this is from)</label><input name="From" placeholder="Your name"></div>
+
+    <!-- FormSubmit config -->
+    <input type="hidden" name="_subject" value="Wedding website feedback — Priyanka & Aravind">
+    <input type="text" name="_honey" style="display:none">
+    <button type="submit" class="btn btn-primary submit">Send to the couple</button>
+    <div class="err" id="err" style="display:none;"></div>
+  </form>
+
+  <div class="fb-foot">#PRIDestinedForAravind</div>
+</div>
+
+<script>
+  // ===== EDIT THIS: where responses are emailed =====
+  const FORM_EMAIL = "shym.sundr@gmail.com";
+  // ==================================================
+  const $ = s => document.querySelector(s);
+  let mediaRec, chunks = [], audioBlob = null, t0 = 0, timer = null;
+
+  const recEl = $('#rec'), recBtn = $('#recBtn'), stopBtn = $('#stopBtn'),
+        redoBtn = $('#redoBtn'), audioEl = $('#recAudio'), dlBtn = $('#dlBtn'), timeEl = $('#recTime');
+
+  function fmt(s){ const m = Math.floor(s/60); return m + ':' + String(s%60).padStart(2,'0'); }
+  function tick(){ timeEl.textContent = fmt(Math.floor((Date.now()-t0)/1000)); }
+
+  recBtn.addEventListener('click', async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      chunks = []; mediaRec = new MediaRecorder(stream);
+      mediaRec.ondataavailable = e => chunks.push(e.data);
+      mediaRec.onstop = () => {
+        audioBlob = new Blob(chunks, { type: 'audio/webm' });
+        const url = URL.createObjectURL(audioBlob);
+        audioEl.src = url; audioEl.style.display = 'inline-block';
+        dlBtn.href = url; dlBtn.style.display = 'inline-block'; redoBtn.style.display = 'inline-block';
+        stream.getTracks().forEach(t => t.stop());
+      };
+      mediaRec.start(); recEl.classList.add('recording');
+      recBtn.disabled = true; stopBtn.disabled = false;
+      t0 = Date.now(); timer = setInterval(tick, 500); tick();
+    } catch (e) { alert('Could not access the microphone. You can still type your feedback above.'); }
+  });
+  stopBtn.addEventListener('click', () => {
+    if (mediaRec && mediaRec.state !== 'inactive') mediaRec.stop();
+    recEl.classList.remove('recording'); clearInterval(timer);
+    recBtn.disabled = false; stopBtn.disabled = true;
+  });
+  redoBtn.addEventListener('click', () => {
+    audioBlob = null; audioEl.style.display = 'none'; dlBtn.style.display = 'none';
+    redoBtn.style.display = 'none'; timeEl.textContent = '0:00';
+  });
+
+  $('#fb').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target; const err = $('#err'); err.style.display = 'none';
+    if (form._honey.value) return; // bot
+    const data = new FormData(form);
+    data.delete('_honey');
+    if (audioBlob) data.append('attachment', audioBlob, 'voice-note.webm');
+    const btn = form.querySelector('.submit'); btn.textContent = 'Sending…'; btn.disabled = true;
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/' + FORM_EMAIL, { method: 'POST', body: data });
+      if (!res.ok) throw new Error('bad status');
+      document.querySelector('.card').innerHTML =
+        '<div class="done"><h2>Thank you &#10022;</h2><p style="font-style:italic;color:var(--ink-soft);margin-top:10px;">' +
+        'Your details are on their way to the couple. We\'ll use them to finish the site.</p></div>';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (_) {
+      btn.textContent = 'Send to the couple'; btn.disabled = false;
+      err.style.display = 'block';
+      err.innerHTML = 'Hmm, that didn\'t send. Please try again, or email us directly at ' + FORM_EMAIL + '.';
+    }
+  });
+</script>
+</body>
+</html>

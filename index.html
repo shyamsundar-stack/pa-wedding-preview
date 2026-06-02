@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Priyanka & Aravind — design options</title>
+<meta name="description" content="Three design options for the wedding website of Priyanka & Aravind. Pick a favourite.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Priyanka & Aravind — choose a design">
+<meta property="og:description" content="Three design options for our wedding website. Take a look and tell us your favourite.">
+<meta property="og:image" content="https://shyamsundar-stack.github.io/pa-wedding-preview/v2-signature/assets/share.png">
+<style>
+@font-face{font-family:'Instr';src:url('v2-signature/assets/fonts/InstrumentSerif-Regular.ttf');}
+@font-face{font-family:'InstrI';font-style:italic;src:url('v2-signature/assets/fonts/InstrumentSerif-Italic.ttf');}
+@font-face{font-family:'Jura';src:url('v2-signature/assets/fonts/Jura-Medium.ttf');}
+:root{--ivory:#f5f0e6;--ivory2:#fbf8f2;--sage:#8c9a7e;--saged:#5f6a52;--terra:#be6a48;--ink:#42463c;--inks:#5b5e51;--line:rgba(110,90,72,.18);--shadow:0 18px 50px -28px rgba(60,55,40,.45);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Instr',Georgia,serif;color:var(--ink);min-height:100vh;
+ background:radial-gradient(60% 45% at 80% 5%,rgba(233,201,188,.45),transparent 60%),
+ radial-gradient(55% 50% at 8% 100%,rgba(140,154,126,.25),transparent 60%),
+ linear-gradient(160deg,#eef0e6,var(--ivory) 50%,#ece2d5);
+ display:flex;align-items:center;justify-content:center;padding:54px 22px;}
+.wrap{max-width:1040px;width:100%;text-align:center;}
+.eye{font-family:'Jura',sans-serif;text-transform:uppercase;letter-spacing:.42em;font-size:12px;color:var(--sage);margin-bottom:18px;}
+h1{font-weight:400;color:var(--saged);font-size:clamp(46px,9vw,88px);line-height:.95;}
+h1 .amp{font-family:'InstrI',serif;font-style:italic;color:var(--terra);display:block;font-size:.4em;margin:4px 0;}
+.sub{font-family:'InstrI',serif;font-style:italic;color:var(--inks);font-size:clamp(16px,2.4vw,20px);margin-top:16px;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:46px 0 30px;}
+.opt{display:block;background:var(--ivory2);border:1px solid var(--line);border-radius:16px;padding:30px 24px;
+ text-decoration:none;color:inherit;transition:.25s;box-shadow:var(--shadow);}
+.opt:hover{transform:translateY(-4px);border-color:var(--sage);}
+.opt .n{font-family:'Jura',sans-serif;text-transform:uppercase;letter-spacing:.24em;font-size:11px;color:var(--terra);}
+.opt h2{font-weight:400;color:var(--saged);font-size:30px;margin:8px 0 10px;}
+.opt p{font-size:14px;color:var(--inks);line-height:1.6;min-height:66px;}
+.opt .go{font-family:'Jura',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:var(--terra);margin-top:14px;display:inline-block;}
+.fb{display:inline-flex;align-items:center;gap:10px;font-family:'Jura',sans-serif;text-transform:uppercase;
+ letter-spacing:.2em;font-size:12px;color:#fff;background:var(--terra);padding:15px 30px;border-radius:34px;
+ text-decoration:none;box-shadow:0 12px 26px -14px rgba(164,84,47,.7);transition:.25s;}
+.fb:hover{background:#a4542f;transform:translateY(-2px);}
+.hash{font-family:'Jura',sans-serif;text-transform:uppercase;letter-spacing:.34em;font-size:11px;color:var(--sage);margin-top:26px;}
+.note{font-size:12.5px;color:var(--inks);font-style:italic;margin-top:8px;}
+@media(max-width:760px){.grid{grid-template-columns:1fr;}.opt p{min-height:0;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eye">A wedding website · choose a direction</div>
+  <h1>Priyanka<span class="amp">&amp;</span>Aravind</h1>
+  <div class="sub">Three takes on the same design. Open each, then tell us your favourite.</div>
+  <div class="grid">
+    <a class="opt" href="v1-polish/"><div class="n">Option 1</div><h2>Polish</h2><p>Clean and refined, with subtle motion. The safe, elegant choice.</p><span class="go">View V1 &rsaquo;</span></a>
+    <a class="opt" href="v2-signature/"><div class="n">Option 2 · recommended</div><h2>Signature</h2><p>Light-aware hero, self-drawing kolam, a timeline lit as you scroll. Clearly bespoke.</p><span class="go">View V2 &rsaquo;</span></a>
+    <a class="opt" href="v3-cinematic/"><div class="n">Option 3</div><h2>Cinematic</h2><p>Everything in V2, plus a “house-lights” intro and ambient music. Most immersive.</p><span class="go">View V3 &rsaquo;</span></a>
+  </div>
+  <a class="fb" href="feedback/">Share your feedback &amp; details</a>
+  <div class="note">Sample photos are placeholders — your real photos go in later.</div>
+  <div class="hash">#PRIDestinedForAravind</div>
+</div>
+</body>
+</html>
