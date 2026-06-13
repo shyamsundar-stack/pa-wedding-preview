@@ -1,0 +1,75 @@
+/* =====================================================================
+   Cinematic envelope-open intro (real video)  +  hero looped-video bg
+   Vetiver & Blush · self-contained add-on (load AFTER styles.css)
+
+   - A 10s envelope-open clip (ends on a white-light burst) plays once per
+     visit, then dissolves straight into the hero.
+   - Autoplays muted (reliable everywhere); a "Play sound" toggle and a
+     Skip are offered. Disabled for prefers-reduced-motion (those guests
+     land straight on the hero).
+   ===================================================================== */
+
+/* ---------- Hero looped-video background (separate file, drop in later) ---------- */
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  z-index:0;opacity:0;transition:opacity 1.2s ease;pointer-events:none;}
+.hero.has-video .hero-bg{opacity:1;}
+.hero-bg-tint{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
+  transition:opacity 1.2s ease;
+  background:linear-gradient(180deg,
+    rgba(66,70,60,.30),rgba(66,70,60,.10) 40%,rgba(245,240,230,.55));}
+.hero.has-video .hero-bg-tint{opacity:1;}
+.hero.has-video .hero-inner{text-shadow:0 1px 28px rgba(66,70,60,.28);}
+
+/* ---------- Intro overlay ---------- */
+body.pa-lock{overflow:hidden;}
+
+.pa-intro{position:fixed;inset:0;z-index:9999;overflow:hidden;
+  background:#160f0a;                         /* warm dark behind the clip   */
+  opacity:1;transition:opacity 1.1s ease;
+  display:flex;align-items:center;justify-content:center;}
+.pa-intro.gone{opacity:0;}
+
+.pa-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#160f0a;}
+
+/* subtle vignette so edge crop never looks hard */
+.pa-intro::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(125% 95% at 50% 45%,transparent 60%,rgba(22,15,10,.5));}
+
+/* the "blinding white" — blooms from the clip's burst, then dissipates to the hero */
+.pa-flash{position:absolute;inset:0;z-index:2;background:#fff;opacity:0;pointer-events:none;
+  transition:opacity .55s ease-in;}
+.pa-intro.blooming{background:#fff;}
+.pa-intro.blooming .pa-flash{opacity:1;}
+.pa-intro.blooming::after{opacity:0;transition:opacity .4s ease;}
+.pa-intro.blooming .pa-skip,
+.pa-intro.blooming .pa-sound,
+.pa-intro.blooming .pa-tap{opacity:0;pointer-events:none;transition:opacity .3s ease;}
+
+/* controls */
+.pa-skip{position:absolute;right:18px;top:16px;z-index:3;
+  font-family:var(--label);text-transform:uppercase;letter-spacing:.2em;font-size:10px;
+  color:#f3ece1;background:rgba(22,15,10,.32);border:1px solid rgba(243,236,225,.35);
+  border-radius:30px;padding:8px 14px;cursor:pointer;opacity:.85;
+  backdrop-filter:blur(4px);transition:opacity .3s ease;}
+.pa-skip:hover{opacity:1;}
+
+.pa-sound{position:absolute;left:18px;bottom:18px;z-index:3;
+  font-family:var(--label);text-transform:uppercase;letter-spacing:.18em;font-size:10px;
+  color:#f3ece1;background:rgba(22,15,10,.32);border:1px solid rgba(243,236,225,.35);
+  border-radius:30px;padding:8px 14px;cursor:pointer;opacity:.85;
+  backdrop-filter:blur(4px);transition:opacity .3s ease;}
+.pa-sound:hover{opacity:1;}
+
+/* tap-to-open prompt (only shown if autoplay is blocked) */
+.pa-tap{position:absolute;left:50%;bottom:13%;transform:translateX(-50%);z-index:3;
+  font-family:var(--label);text-transform:uppercase;letter-spacing:.26em;font-size:11px;
+  color:#f3ece1;display:none;flex-direction:column;align-items:center;gap:11px;
+  animation:paPulse 2.6s ease-in-out infinite;cursor:pointer;text-align:center;}
+.pa-tap .dot{width:48px;height:48px;border-radius:50%;border:1px solid #f3ece1;
+  display:grid;place-items:center;font-size:18px;}
+.pa-intro.blocked .pa-tap{display:flex;}
+@keyframes paPulse{0%,100%{opacity:.72;}50%{opacity:1;}}
+
+@media (prefers-reduced-motion:reduce){
+  .pa-intro{display:none !important;}
+}

@@ -1,0 +1,117 @@
+/* =========================================================================
+   PRIYANKA & ARAVIND — site behaviour
+   ── EDIT ONLY THIS CONFIG BLOCK to drop in the real details ──────────────
+   ========================================================================= */
+const CONFIG = {
+  // Wedding day / muhurtham — ISO format "YYYY-MM-DDTHH:MM:SS" (IST).
+  // Set this to the real date and the countdown + labels update automatically.
+  weddingDateISO: "2026-07-12T07:00:00",    // Muhurtham — Sun 12 July 2026, 7:00 AM IST (countdown target)
+  dateDisplay:    "12 July 2026",           // muhurtham day (used in countdown note)
+  dateRange:      "11 & 12 July 2026",      // shown in the hero (Reception 11th eve + Muhurtham 12th morning)
+  rsvpBy:         "30 June 2026",           // PLACEHOLDER — confirm RSVP-by date
+  liveStreamURL:  "",            // e.g. "https://youtube.com/live/xxxx"
+};
+/* ====================== (no need to edit below) ========================== */
+
+(function () {
+  // ---- Inject configured text where provided ----
+  const heroDate = CONFIG.dateRange || CONFIG.dateDisplay;
+  if (heroDate) {
+    document.querySelectorAll('[data-cfg="dateShort"]').forEach(el => el.textContent = heroDate);
+  }
+  if (CONFIG.rsvpBy) {
+    document.querySelectorAll('.sec-lead em').forEach(el => {
+      if (el.textContent.includes('RSVP date')) el.textContent = CONFIG.rsvpBy;
+    });
+  }
+  if (CONFIG.liveStreamURL) {
+    const lb = document.getElementById('liveBtn');
+    if (lb) { lb.href = CONFIG.liveStreamURL; lb.textContent = 'Watch the live stream'; lb.removeAttribute('aria-disabled'); lb.target = '_blank'; }
+  }
+
+  // ---- Nav: solid on scroll ----
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('solid', window.scrollY > 40);
+  onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ---- Mobile menu ----
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // ---- Countdown ----
+  const pad = n => String(n).padStart(2, '0');
+  const cd = {
+    d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
+    m: document.getElementById('cd-m'), s: document.getElementById('cd-s'),
+    note: document.getElementById('cd-date')
+  };
+  const target = CONFIG.weddingDateISO ? new Date(CONFIG.weddingDateISO) : null;
+
+  function tick() {
+    if (!target || isNaN(target)) { return; } // leave placeholders until date is set
+    const now = new Date();
+    let diff = Math.floor((target - now) / 1000);
+    if (diff <= 0) {
+      cd.d.textContent = cd.h.textContent = cd.m.textContent = cd.s.textContent = '00';
+      cd.note.innerHTML = 'Today is the day. &#10022;';
+      return;
+    }
+    const days = Math.floor(diff / 86400); diff %= 86400;
+    const hrs = Math.floor(diff / 3600); diff %= 3600;
+    const mins = Math.floor(diff / 60); const secs = diff % 60;
+    cd.d.textContent = days; cd.h.textContent = pad(hrs);
+    cd.m.textContent = pad(mins); cd.s.textContent = pad(secs);
+    if (CONFIG.dateDisplay) cd.note.textContent = 'Until the muhurtham · ' + CONFIG.dateDisplay;
+  }
+  if (target) { tick(); setInterval(tick, 1000); }
+
+  // ---- Reveal on scroll ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---- FAQ accordion ----
+  document.querySelectorAll('.faq button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const ans = item.querySelector('.ans');
+      const open = item.classList.toggle('open');
+      ans.style.maxHeight = open ? ans.scrollHeight + 'px' : '0';
+    });
+  });
+
+  // ---- Expandable event cards ----
+  document.querySelectorAll('.ev-card').forEach(card => {
+    const more = card.querySelector('.ev-more');
+    const toggle = () => {
+      const open = card.classList.toggle('open');
+      card.setAttribute('aria-expanded', String(open));
+      more.style.maxHeight = open ? more.scrollHeight + 'px' : '0';
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
+  // ---- RSVP (front-end only placeholder) ----
+  const form = document.getElementById('rsvpForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    if (!data.first || !data.last || !data.contact) {
+      alert('Please fill in your name and a way to reach you.');
+      return;
+    }
+    // TODO: wire to a backend (Google Form / Formspree / Sheets / serverless).
+    const name = data.first;
+    form.innerHTML = '<div style="text-align:center;padding:20px 0;">' +
+      '<div style="font-family:\'Instr\',serif;font-size:34px;color:var(--sage-deep);">Thank you, ' + name + '.</div>' +
+      '<p style="font-style:italic;color:var(--ink-soft);margin-top:10px;">Your response has been noted with joy. ' +
+      'We can\'t wait to celebrate with you.</p>' +
+      '<p style="font-size:12px;color:var(--ink-soft);margin-top:16px;">(Demo only — responses aren\'t stored yet.)</p></div>';
+  });
+})();
