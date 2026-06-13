@@ -275,7 +275,7 @@
     const btn=form.querySelector('.submit'); btn.textContent='Sending…'; btn.disabled=true;
     let ok=false;
     if(SHEET_ENDPOINT){
-      try{const obj={}; fd.forEach((v,k)=>obj[k]=v); if(audioBlob) obj.voiceNote=await blobToB64(audioBlob);
+      try{const obj={formType:'Feedback'}; fd.forEach((v,k)=>obj[k]=v); if(audioBlob) obj.voiceNote=await blobToB64(audioBlob);
         await fetch(SHEET_ENDPOINT,{method:'POST',body:JSON.stringify(obj),headers:{'Content-Type':'text/plain'}}); ok=true;}catch(_){}
     }
     try{const r=await fetch(FORMSUBMIT,{method:'POST',body:fd}); if(r.ok) ok=true;}catch(_){}

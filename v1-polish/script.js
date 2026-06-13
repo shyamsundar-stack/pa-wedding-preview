@@ -97,21 +97,27 @@ const CONFIG = {
     });
   });
 
-  // ---- RSVP (front-end only placeholder) ----
+  // ---- RSVP -> Google Sheet (+ email notify) ----
+  const RSVP_SHEET = "https://script.google.com/macros/s/AKfycbyK7hBn96P5wy4Oz3Wwg1rKRTpNnC0qNGZ6Aq8FcLIuDBOuDRJfAcuw2__2CmzMOoGhcQ/exec";
+  const RSVP_MAIL  = "https://formsubmit.co/ajax/f277fb078ff7281e849b7b69058a8e32";
   const form = document.getElementById('rsvpForm');
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
     if (!data.first || !data.last || !data.contact) {
       alert('Please fill in your name and a way to reach you.');
       return;
     }
-    // TODO: wire to a backend (Google Form / Formspree / Sheets / serverless).
+    const btn = form.querySelector('button[type="submit"], .btn-primary');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+    data.formType = 'RSVPs';
+    data._subject = 'Wedding RSVP — ' + data.first + ' ' + data.last;
+    try { await fetch(RSVP_SHEET, { method:'POST', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(data) }); } catch (_) {}
+    try { await fetch(RSVP_MAIL,  { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) }); } catch (_) {}
     const name = data.first;
     form.innerHTML = '<div style="text-align:center;padding:20px 0;">' +
       '<div style="font-family:\'Instr\',serif;font-size:34px;color:var(--sage-deep);">Thank you, ' + name + '.</div>' +
       '<p style="font-style:italic;color:var(--ink-soft);margin-top:10px;">Your response has been noted with joy. ' +
-      'We can\'t wait to celebrate with you.</p>' +
-      '<p style="font-size:12px;color:var(--ink-soft);margin-top:16px;">(Demo only — responses aren\'t stored yet.)</p></div>';
+      'We can\'t wait to celebrate with you.</p></div>';
   });
 })();
