@@ -15,6 +15,7 @@
 @font-face{font-family:'Script';src:url('assets/fonts/NothingYouCouldDo-Regular.ttf');font-display:swap;}
 
 /* ---------- Tokens ---------- */
+html{color-scheme:light}
 :root{
   --ivory:#f5f0e6; --ivory-2:#fbf8f2; --paper:#efe9dd;
   --sage:#8c9a7e; --sage-deep:#455138; --mist:#cbd2c2;
