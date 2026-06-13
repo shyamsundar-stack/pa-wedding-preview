@@ -15,8 +15,9 @@
   .fb-head .eyebrow{display:block;margin-bottom:14px;color:var(--sage-deep);}
   .fb-head h1{font-family:var(--serif);font-weight:400;color:var(--sage-deep);font-size:clamp(38px,6.5vw,62px);line-height:1;}
   .fb-head .amp{font-style:italic;color:var(--terra);}
-  .fb-head p{font-style:italic;color:var(--ink-soft);max-width:52ch;margin:14px auto 0;}
-  .who{max-width:760px;margin:22px auto 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .fb-head p{font-style:italic;color:var(--ink-soft);max-width:54ch;margin:14px auto 0;}
+  .fb-head .mins{font-style:normal;font-family:var(--label);text-transform:uppercase;letter-spacing:.2em;font-size:11px;color:var(--sage);margin-top:12px;}
+  .who{max-width:760px;margin:20px auto 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
   .who label{cursor:pointer;}
   .who input{position:absolute;opacity:0;}
   .who .opt{display:block;padding:9px 16px;border:1px solid var(--line);border-radius:30px;background:var(--ivory);
@@ -32,10 +33,8 @@
   .sec .hint{font-style:italic;color:var(--ink-soft);font-size:14px;margin:2px 0 18px;}
   .side{border-left:3px solid var(--blush);padding:2px 0 2px 18px;margin:0 0 22px;}
   .side.groom{border-left-color:var(--sage);}
-  .side .side-h{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.22em;font-size:11px;
-    color:var(--terra);margin-bottom:14px;}
+  .side .side-h{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:var(--terra);margin-bottom:14px;}
   .side.groom .side-h{color:var(--sage-deep);}
-  .helper{font-size:12.5px;color:var(--ink-soft);margin-top:-10px;margin-bottom:14px;}
   .grp-rule{height:1px;background:var(--line);margin:0 0 26px;}
   .opt-row{display:grid;gap:10px;}
   .opt-pick{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:13px 15px;cursor:pointer;background:var(--ivory);transition:.2s;}
@@ -43,7 +42,7 @@
   .opt-pick input{margin-top:4px;accent-color:var(--terra);}
   .opt-pick b{font-family:var(--label);text-transform:uppercase;letter-spacing:.1em;font-size:12px;color:var(--clove);}
   .opt-pick span{display:block;font-size:13.5px;color:var(--ink-soft);margin-top:2px;}
-  /* recorder */
+  select{width:100%;font-family:var(--body);font-size:16px;color:var(--ink);background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:12px 14px;}
   .rec{display:flex;align-items:center;gap:13px;flex-wrap:wrap;background:var(--ivory);border:1px dashed var(--line);border-radius:14px;padding:18px;}
   .rec button{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:11px;padding:11px 18px;border-radius:30px;border:1px solid var(--terra);background:var(--terra);color:#fff;cursor:pointer;transition:.2s;}
   .rec button.ghost{background:transparent;color:var(--terra);}
@@ -59,6 +58,7 @@
   .err{color:var(--terra-deep);font-size:13px;margin-top:10px;text-align:center;}
   .fb-foot{text-align:center;margin-top:26px;font-family:var(--label);text-transform:uppercase;letter-spacing:.3em;font-size:11px;color:var(--sage);}
   label.fl{display:block;font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--clove);margin-bottom:7px;}
+  .opt-note{font-size:12px;color:var(--sage-deep);font-style:italic;margin:-10px 0 14px;}
 </style>
 </head>
 <body>
@@ -66,7 +66,8 @@
   <div class="fb-head">
     <span class="eyebrow">Aravind <span style="color:var(--terra)">&#10022;</span> Priyanka</span>
     <h1>Let's finish<span class="amp"> your</span> website</h1>
-    <p>This is for the two of you to fill. Share what you can — nothing is mandatory, and there's room to write freely. It takes about 8&ndash;10 minutes, and you can leave a voice note at the end instead of typing.</p>
+    <p>This is for the two of you. We've pre-written a lot — most boxes can be left blank to keep our wording, so only fill what you'd like to change or add. There's a voice note at the end if you'd rather talk than type.</p>
+    <div class="mins">About 10 minutes · nothing is mandatory</div>
     <div class="who">
       <label><input type="radio" name="Filled by" value="Aravind" checked><span class="opt">I'm Aravind</span></label>
       <label><input type="radio" name="Filled by" value="Priyanka"><span class="opt">I'm Priyanka</span></label>
@@ -76,24 +77,37 @@
 
   <form id="fb" class="card" novalidate>
 
-    <!-- 1 DESIGN -->
+    <!-- 01 DESIGN -->
     <div class="sec">
       <div class="sec-num"><span class="n">01</span><h2>Which design do you love?</h2></div>
-      <p class="hint">We shared three versions of the site. Open each and pick your favourite.</p>
+      <p class="hint">We shared three versions. Open each and pick a favourite.</p>
       <div class="opt-row">
         <label class="opt-pick"><input type="radio" name="Design choice" value="V1 Polish"><div><b>V1 · Polish</b><span>Clean & refined, subtle motion.</span></div></label>
         <label class="opt-pick"><input type="radio" name="Design choice" value="V2 Signature"><div><b>V2 · Signature (recommended)</b><span>Glowing, interactive hero, self-drawing kolam, scroll-lit timeline.</span></div></label>
         <label class="opt-pick"><input type="radio" name="Design choice" value="V3 Cinematic"><div><b>V3 · Cinematic</b><span>Everything in V2 + a "house-lights" intro and ambient music.</span></div></label>
       </div>
-      <div class="field" style="margin-top:16px;"><label class="fl">Anything you'd change about the look, colours, or feel?</label><textarea name="Design notes" rows="3" placeholder="e.g. love V2 but want V3's intro without music; want more contrast; etc."></textarea></div>
+      <div class="field" style="margin-top:16px;"><label class="fl">Anything you'd change — look, colours, feel?</label><textarea name="Design notes" rows="3" placeholder="e.g. love V2 but want V3's intro without music; more contrast; etc."></textarea></div>
     </div>
     <div class="grp-rule"></div>
 
-    <!-- 2 FAMILIES -->
+    <!-- 02 NAMES, HASHTAG, WELCOME -->
     <div class="sec">
-      <div class="sec-num"><span class="n">02</span><h2>Your families</h2></div>
-      <p class="hint">Exactly how you'd like everyone written on the site — full names, with titles (Dr., Mr., Mrs., Late) where you'd like them. Take your time; this is the part guests read most closely.</p>
+      <div class="sec-num"><span class="n">02</span><h2>Names &amp; the opening lines</h2></div>
+      <div class="field"><label class="fl">How should your names appear? (titles too)</label>
+        <textarea name="Names display" rows="2" placeholder="Currently: hero & footer 'Aravind & Priyanka'; family cards 'Aravind Srinivasan' and 'Dr. Priyanka R'. Change anything you'd like."></textarea></div>
+      <div class="field two">
+        <div><label class="fl">Hashtag</label><input name="Hashtag" placeholder="#PRIDestinedForAravind — or 'no hashtag'"></div>
+        <div><label class="fl">One-line tagline / theme</label><input name="Tagline" placeholder="Leave blank to keep 'where two worlds become one'"></div>
+      </div>
+      <div class="field"><label class="fl">A short welcome note for the top of the site (optional)</label>
+        <textarea name="Welcome note" rows="2" placeholder="1–3 lines in your voice. Leave blank to keep our wording. We'll polish without changing your meaning."></textarea></div>
+    </div>
+    <div class="grp-rule"></div>
 
+    <!-- 03 FAMILIES -->
+    <div class="sec">
+      <div class="sec-num"><span class="n">03</span><h2>Your families</h2></div>
+      <p class="hint">Exactly how you'd like everyone written — full names, with titles (Dr., Mr., Mrs., Late) where you'd like them. This is the part guests read most closely.</p>
       <div class="side">
         <div class="side-h">Bride's side &mdash; Priyanka's family</div>
         <div class="field two">
@@ -101,13 +115,10 @@
           <div><label class="fl">Bride's mother — full name</label><input name="Bride mother" placeholder="e.g. Mrs. Lakshmi Ravi"></div>
         </div>
         <div class="field"><label class="fl">Bride's siblings</label>
-          <textarea name="Bride siblings" rows="3" placeholder="One per line, with relation (and spouse if married). e.g.
-Elder brother — Karthik (w/ Divya)
-Younger sister — Meera"></textarea></div>
-        <div class="field"><label class="fl">Anyone else to honour on the bride's side? (grandparents, late parents, the hosts of the wedding, etc.)</label>
-          <textarea name="Bride family extra" rows="2" placeholder="Optional — e.g. 'Wedding hosted by …', 'Grandparents …', 'D/o Late Mr. …'"></textarea></div>
+          <textarea name="Bride siblings" rows="3" placeholder="One per line, with relation (and spouse if married). e.g.&#10;Elder brother — Karthik (w/ Divya)&#10;Younger sister — Meera"></textarea></div>
+        <div class="field"><label class="fl">Anyone else to honour on the bride's side?</label>
+          <textarea name="Bride family extra" rows="2" placeholder="Optional — grandparents, late parents, the wedding hosts, etc."></textarea></div>
       </div>
-
       <div class="side groom">
         <div class="side-h">Groom's side &mdash; Aravind's family</div>
         <div class="field two">
@@ -115,49 +126,68 @@ Younger sister — Meera"></textarea></div>
           <div><label class="fl">Groom's mother — full name</label><input name="Groom mother" placeholder="e.g. Mrs. …"></div>
         </div>
         <div class="field"><label class="fl">Groom's siblings</label>
-          <textarea name="Groom siblings" rows="3" placeholder="One per line, with relation (and spouse if married). e.g.
-Elder sister — Anjali (w/ Suresh)"></textarea></div>
+          <textarea name="Groom siblings" rows="3" placeholder="One per line, with relation (and spouse if married)."></textarea></div>
         <div class="field"><label class="fl">Anyone else to honour on the groom's side?</label>
           <textarea name="Groom family extra" rows="2" placeholder="Optional — grandparents, late parents, hosts, etc."></textarea></div>
       </div>
     </div>
     <div class="grp-rule"></div>
 
-    <!-- 3 ABOUT THE COUPLE -->
+    <!-- 04 ABOUT -->
     <div class="sec">
-      <div class="sec-num"><span class="n">03</span><h2>About the two of you</h2></div>
-      <p class="hint">A few warm lines each — we'll shape the wording beautifully. Both of you will be presented as equals.</p>
+      <div class="sec-num"><span class="n">04</span><h2>About the two of you</h2></div>
+      <p class="hint">A few warm lines each — we'll shape the wording. Both of you are presented as equals.</p>
       <div class="field"><label class="fl">About Priyanka</label>
-        <textarea name="Priyanka about" rows="3" placeholder="Qualifications (MBBS, MS/DGO…), where she practises, specialisation, and one line on how she'd like to be introduced."></textarea></div>
+        <textarea name="Priyanka about" rows="3" placeholder="Qualifications (MBBS, MS/DGO…), where she practises, specialisation, and how she'd like to be introduced."></textarea></div>
       <div class="field"><label class="fl">About Aravind</label>
-        <textarea name="Aravind about" rows="3" placeholder="How you'd like Aravind described — e.g. 'creates magic at events / one of Chennai's finest event experience makers, third generation of Modern Stage Craft.' Tell us the tone you want."></textarea></div>
+        <textarea name="Aravind about" rows="3" placeholder="How you'd like Aravind described — e.g. 'creates magic at events / one of Chennai's finest experience-makers, third generation of Modern Stage Craft.' Tell us the tone."></textarea></div>
       <div class="field"><label class="fl">How did you two meet? Your story.</label>
-        <textarea name="Our story" rows="4" placeholder="Just the gist is perfect — how you met, the moment you knew, a line you'd love guests to read. We'll polish it."></textarea></div>
+        <textarea name="Our story" rows="4" placeholder="Just the gist — how you met, the moment you knew, a line you'd love guests to read. We'll polish it."></textarea></div>
     </div>
     <div class="grp-rule"></div>
 
-    <!-- 4 EVENTS -->
+    <!-- 05 EVENTS -->
     <div class="sec">
-      <div class="sec-num"><span class="n">04</span><h2>The events</h2></div>
-      <p class="hint">We currently show: <b>Reception</b> — Sat 11 July, 6:30 PM &nbsp;·&nbsp; <b>Muhurtham</b> — Sun 12 July, 7:00 AM, both at the Mayor Ramanathan Centre, Chennai.</p>
-      <div class="field"><label class="fl">Any corrections, or other functions to add? (engagement / nichayathartham, mehndi, sangeet, etc. — with date, time & venue)</label>
-        <textarea name="Events" rows="3" placeholder="e.g. 'Muhurtham time is 7:45 AM not 7:00'; 'Add Nichayathartham — 10 July, 6 PM, same venue'."></textarea></div>
+      <div class="sec-num"><span class="n">05</span><h2>The events</h2></div>
+      <p class="hint">We show: <b>Reception</b> — Sat 11 July, 6:30 PM &nbsp;·&nbsp; <b>Muhurtham</b> — Sun 12 July, 7:00 AM, both at the Mayor Ramanathan Centre, Chennai.</p>
+      <div class="field"><label class="fl">Corrections, or other functions to add? (engagement / nichayam, mehndi, sangeet — with date, time, venue)</label>
+        <textarea name="Events" rows="3" placeholder="e.g. 'Muhurtham is 7:45 AM not 7:00'; 'Add Nichayathartham — 10 July, 6 PM'."></textarea></div>
+      <div class="field"><label class="fl">A 1–2 line description for each event (optional)</label>
+        <textarea name="Event descriptions" rows="3" placeholder="Leave blank to keep ours. e.g. Reception — dinner, music & photos with the couple. Muhurtham — the wedding rituals, followed by breakfast."></textarea></div>
+      <div class="field"><label class="fl">Any arrival / seating instruction for guests?</label>
+        <input name="Arrival note" placeholder="e.g. 'Please be seated by 6:45 AM for the muhurtham' — or 'none'"></div>
       <div class="field two">
         <div><label class="fl">Dress code — Reception</label><input name="Dress reception" placeholder="e.g. Casual / smart-casual"></div>
         <div><label class="fl">Dress code — Muhurtham</label><input name="Dress muhurtham" placeholder="e.g. Traditional"></div>
       </div>
+      <div class="field"><label class="fl">Guest colour palette (the site can suggest colours to wear)</label>
+        <input name="Dress palette" placeholder="3–6 colours to wear / avoid — or 'no palette, text only'"></div>
       <div class="field"><label class="fl">RSVP by which date?</label><input name="RSVP by" placeholder="e.g. 30 June 2026"></div>
     </div>
     <div class="grp-rule"></div>
 
-    <!-- 5 LOGISTICS -->
+    <!-- 06 VENUE & TRAVEL -->
     <div class="sec">
-      <div class="sec-num"><span class="n">05</span><h2>Links & logistics</h2></div>
-      <div class="field"><label class="fl">Live-stream — platform & link (if known)</label><input name="Live stream" placeholder="YouTube / Zoom link, or 'decide later'"></div>
-      <div class="field"><label class="fl">Give-Back — the cause you'd like guests to support, and the donation link / UPI</label>
-        <textarea name="Give back" rows="2" placeholder="Cause name + a short line on why it matters to you + the link or UPI ID."></textarea></div>
+      <div class="sec-num"><span class="n">06</span><h2>Venue &amp; travel</h2></div>
+      <div class="field"><label class="fl">Confirm the venue (and tell us if any event is elsewhere)</label>
+        <textarea name="Venue" rows="2" placeholder="Ours: Mayor Ramanathan Centre, 75/2 Santhome High Road, R.A. Puram, Chennai 600028. Correct? Different venue for any function?"></textarea></div>
+      <div class="field"><label class="fl">Guest logistics for the venue</label>
+        <textarea name="Venue logistics" rows="2" placeholder="Parking / valet, distance from airport / station, accessibility, a landmark — or 'skip this'."></textarea></div>
       <div class="field"><label class="fl">Recommended hotels nearby (for outstation guests)</label>
         <textarea name="Hotels" rows="2" placeholder="Names / area, and any special rate if arranged."></textarea></div>
+    </div>
+    <div class="grp-rule"></div>
+
+    <!-- 07 LIVE, GIVE-BACK, CONTACTS -->
+    <div class="sec">
+      <div class="sec-num"><span class="n">07</span><h2>Live-stream, Give-Back &amp; contacts</h2></div>
+      <div class="field"><label class="fl">Live-stream — platform &amp; link (if known)</label><input name="Live stream" placeholder="YouTube / Zoom link, or leave blank"></div>
+      <div class="field"><label class="fl">Show the "Watch Live" section?</label>
+        <select name="Watch Live section"><option>Keep it — link will come later / above</option><option>Hide it for now</option><option>We won't live-stream — remove it</option></select></div>
+      <div class="field"><label class="fl">Give-Back — the cause + why it matters + donation link / UPI</label>
+        <textarea name="Give back" rows="2" placeholder="Cause name + a short line on why + the link or UPI ID."></textarea></div>
+      <div class="field"><label class="fl">Show the "Give Back" section?</label>
+        <select name="Give Back section"><option>Keep it</option><option>Hide it — no donations</option></select></div>
       <div class="side">
         <div class="side-h">Contact — bride's side</div>
         <div class="field"><input name="Contact bride side" placeholder="Name & phone — e.g. Karthik, +91 …"></div>
@@ -166,21 +196,40 @@ Elder sister — Anjali (w/ Suresh)"></textarea></div>
         <div class="side-h">Contact — groom's side</div>
         <div class="field"><input name="Contact groom side" placeholder="Name & phone"></div>
       </div>
-      <div class="field"><label class="fl">Wedding coordinator / logistics contact (optional)</label><input name="Contact coordinator" placeholder="Name & phone"></div>
+      <div class="field"><label class="fl">Coordinator / logistics contact (optional)</label><input name="Contact coordinator" placeholder="Name & phone"></div>
     </div>
     <div class="grp-rule"></div>
 
-    <!-- 6 PHOTOS -->
+    <!-- 08 FAQ -->
     <div class="sec">
-      <div class="sec-num"><span class="n">06</span><h2>Photos</h2></div>
-      <div class="field"><label class="fl">When will your pre-wedding photos be ready, and how will you share them?</label>
-        <input name="Photos" placeholder="e.g. by 20 June, via Google Drive / WhatsApp"></div>
+      <div class="sec-num"><span class="n">08</span><h2>Guest FAQ</h2></div>
+      <p class="hint">Quick answers so guests don't have to ask.</p>
+      <div class="field two">
+        <div><label class="fl">Are children welcome?</label><select name="FAQ children"><option>Yes, of course</option><option>Adults-only, please</option></select></div>
+        <div><label class="fl">Can guests attend the reception only?</label><select name="FAQ reception only"><option>Yes</option><option>Prefer both events</option></select></div>
+      </div>
+      <div class="field"><label class="fl">Anything else guests often ask?</label>
+        <textarea name="FAQ other" rows="2" placeholder="Parking, gifts, how virtual guests join, dress nuances, kids' area — anything."></textarea></div>
     </div>
     <div class="grp-rule"></div>
 
-    <!-- 7 OPEN + VOICE -->
+    <!-- 09 PHOTOS -->
     <div class="sec">
-      <div class="sec-num"><span class="n">07</span><h2>Anything else?</h2></div>
+      <div class="sec-num"><span class="n">09</span><h2>Photos</h2></div>
+      <div class="field"><label class="fl">Send your photos (1 portrait for the story + ~6 for the gallery)</label>
+        <textarea name="Photos" rows="2" placeholder="Paste a Drive/WhatsApp link, and the preferred order if it matters."></textarea></div>
+      <div class="field"><label class="fl">Until photos are ready…</label>
+        <select name="Photos section"><option>Keep the photo sections (we'll add photos when sent)</option><option>Hide the portrait &amp; gallery until photos are ready</option></select></div>
+    </div>
+    <div class="grp-rule"></div>
+
+    <!-- 10 BLESSINGS + ANYTHING ELSE -->
+    <div class="sec">
+      <div class="sec-num"><span class="n">10</span><h2>Blessings &amp; anything else</h2></div>
+      <div class="field"><label class="fl">The "Blessings" section (currently shows sample wishes)</label>
+        <select name="Blessings section"><option>Collect blessings from guests' RSVP notes later</option><option>Hide it for now</option><option>Use the wishes I'll paste below</option></select></div>
+      <div class="field"><label class="fl">Blessings to use (only if you chose "use the wishes below")</label>
+        <textarea name="Blessings text" rows="2" placeholder="One per line: the wish — and who it's from."></textarea></div>
       <div class="field"><label class="fl">Wishes, likes, dislikes, must-haves</label><textarea name="Open feedback" rows="3" placeholder="Tell us anything at all."></textarea></div>
       <label class="fl">Or just talk to us — leave a voice note</label>
       <div class="rec" id="rec">
@@ -191,7 +240,7 @@ Elder sister — Anjali (w/ Suresh)"></textarea></div>
         <audio id="recAudio" controls style="display:none;"></audio>
         <button type="button" id="redoBtn" class="ghost" style="display:none;">Re-record</button>
         <a id="dlBtn" class="ghost" download="voice-note.webm" style="display:none;text-decoration:none;border:1px solid var(--sage);color:var(--sage-deep);padding:11px 18px;border-radius:30px;font-family:var(--label);text-transform:uppercase;letter-spacing:.16em;font-size:11px;">Download</a>
-        <span class="hint">Tap Record and just speak. If recording isn't supported on your phone, use Download and send it to us on WhatsApp.</span>
+        <span class="hint">Tap Record and just speak. If recording isn't supported on your phone, use Download and WhatsApp it to us.</span>
       </div>
     </div>
 
@@ -217,9 +266,7 @@ Elder sister — Anjali (w/ Suresh)"></textarea></div>
   recBtn.addEventListener('click',async()=>{try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});chunks=[];mediaRec=new MediaRecorder(stream);mediaRec.ondataavailable=e=>chunks.push(e.data);mediaRec.onstop=()=>{audioBlob=new Blob(chunks,{type:'audio/webm'});const url=URL.createObjectURL(audioBlob);audioEl.src=url;audioEl.style.display='inline-block';dlBtn.href=url;dlBtn.style.display='inline-block';redoBtn.style.display='inline-block';stream.getTracks().forEach(t=>t.stop());};mediaRec.start();recEl.classList.add('recording');recBtn.disabled=true;stopBtn.disabled=false;t0=Date.now();timer=setInterval(tick,500);tick();}catch(e){alert('Could not access the microphone. You can still type your feedback above.');}});
   stopBtn.addEventListener('click',()=>{if(mediaRec&&mediaRec.state!=='inactive')mediaRec.stop();recEl.classList.remove('recording');clearInterval(timer);recBtn.disabled=false;stopBtn.disabled=true;});
   redoBtn.addEventListener('click',()=>{audioBlob=null;audioEl.style.display='none';dlBtn.style.display='none';redoBtn.style.display='none';timeEl.textContent='0:00';});
-
   const blobToB64 = b => new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result);fr.readAsDataURL(b);});
-
   $('#fb').addEventListener('submit', async e=>{
     e.preventDefault();
     const form=e.target,err=$('#err');err.style.display='none';
@@ -227,20 +274,11 @@ Elder sister — Anjali (w/ Suresh)"></textarea></div>
     const fd=new FormData(form); fd.delete('_honey');
     const btn=form.querySelector('.submit'); btn.textContent='Sending…'; btn.disabled=true;
     let ok=false;
-    // 1) reliable store + voice note (if Apps Script configured)
     if(SHEET_ENDPOINT){
-      try{
-        const obj={}; fd.forEach((v,k)=>obj[k]=v);
-        if(audioBlob) obj.voiceNote=await blobToB64(audioBlob);
-        await fetch(SHEET_ENDPOINT,{method:'POST',body:JSON.stringify(obj),headers:{'Content-Type':'text/plain'}});
-        ok=true;
-      }catch(_){}
+      try{const obj={}; fd.forEach((v,k)=>obj[k]=v); if(audioBlob) obj.voiceNote=await blobToB64(audioBlob);
+        await fetch(SHEET_ENDPOINT,{method:'POST',body:JSON.stringify(obj),headers:{'Content-Type':'text/plain'}}); ok=true;}catch(_){}
     }
-    // 2) email notification via FormSubmit (text)
-    try{
-      const r=await fetch(FORMSUBMIT,{method:'POST',body:fd});
-      if(r.ok) ok=true;
-    }catch(_){}
+    try{const r=await fetch(FORMSUBMIT,{method:'POST',body:fd}); if(r.ok) ok=true;}catch(_){}
     if(ok){
       document.querySelector('.card').innerHTML='<div class="done"><h2>Thank you &#10022;</h2><p style="font-style:italic;color:var(--ink-soft);margin-top:10px;">We have everything we need to bring your site to life. Can\'t wait to show you.</p></div>';
       window.scrollTo({top:0,behavior:'smooth'});
