@@ -31,14 +31,19 @@
      The production site/ keeps the once-per-visit sessionStorage guard. */
   if (!PA_INTRO || RM) return;
 
+  // pick the vertical clip on phones, the landscape clip on wider screens
+  var portrait  = window.matchMedia && matchMedia('(max-width: 768px)').matches;
+  var vidSrc    = portrait ? 'assets/video/intro-envelope-portrait.mp4' : 'assets/video/intro-envelope.mp4';
+  var vidPoster = portrait ? 'assets/img/intro-poster-portrait.jpg'     : 'assets/img/intro-poster.jpg';
+
   var ov = document.createElement('div');
   ov.className = 'pa-intro';
   ov.setAttribute('role', 'dialog');
   ov.setAttribute('aria-label', 'Wedding invitation');
   ov.innerHTML =
       '<video class="pa-vid" playsinline muted autoplay preload="auto" ' +
-             'poster="assets/img/intro-poster.jpg">' +
-        '<source src="assets/video/intro-envelope.mp4" type="video/mp4">' +
+             'poster="' + vidPoster + '">' +
+        '<source src="' + vidSrc + '" type="video/mp4">' +
       '</video>' +
       '<div class="pa-flash"></div>' +
       '<button class="pa-skip" type="button">Skip &rsaquo;</button>' +
