@@ -47,7 +47,6 @@
       '</video>' +
       '<div class="pa-flash"></div>' +
       '<button class="pa-skip" type="button">Skip &rsaquo;</button>' +
-      '<button class="pa-sound" type="button" aria-pressed="false">Play sound</button>' +
       '<div class="pa-tap" role="button" tabindex="0" aria-label="Open the invitation">' +
         '<span class="dot">&#10022;</span><span>Open the invitation</span></div>';
 
@@ -56,7 +55,6 @@
 
   var vid  = ov.querySelector('.pa-vid');
   var skip = ov.querySelector('.pa-skip');
-  var snd  = ov.querySelector('.pa-sound');
   var bloomed = false, done = false;
 
   // Stage 1: the clip's burst blooms to full blinding white.
@@ -89,28 +87,19 @@
     attempt.catch(function () { ov.classList.add('blocked'); });
   }
 
-  function startWithSound() {
+  // the entry is silent — the video stays muted always (no audio to cut off)
+  function startPlayback() {
     if (done) return;
     ov.classList.remove('blocked');
-    vid.muted = false;
-    snd.textContent = 'Mute';
-    snd.setAttribute('aria-pressed', 'true');
+    vid.muted = true;
     vid.play();
   }
 
   skip.addEventListener('click', function (e) { e.stopPropagation(); dissipate(); });
 
-  snd.addEventListener('click', function (e) {
-    e.stopPropagation();
-    vid.muted = !vid.muted;
-    snd.textContent = vid.muted ? 'Play sound' : 'Mute';
-    snd.setAttribute('aria-pressed', String(!vid.muted));
-    if (!vid.muted) vid.play();
-  });
-
-  // tap anywhere (when blocked, or just to hear it) starts with sound
+  // if autoplay was blocked, a tap starts the (muted) clip
   ov.addEventListener('click', function (e) {
-    if (e.target === skip || e.target === snd) return;
-    if (vid.paused || ov.classList.contains('blocked')) startWithSound();
+    if (e.target === skip) return;
+    if (vid.paused || ov.classList.contains('blocked')) startPlayback();
   });
 })();
