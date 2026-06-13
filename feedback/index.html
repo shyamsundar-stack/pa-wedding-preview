@@ -60,6 +60,10 @@
   .fb-foot{text-align:center;margin-top:26px;font-family:var(--label);text-transform:uppercase;letter-spacing:.3em;font-size:11px;color:var(--sage);}
   label.fl{display:block;font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:var(--clove);margin-bottom:7px;}
   .opt-note{font-size:12px;color:var(--sage-deep);font-style:italic;margin:-10px 0 14px;}
+  .reassure{display:flex;gap:13px;align-items:flex-start;background:rgba(233,201,188,.16);border:1px solid var(--line);border-left:3px solid var(--terra);border-radius:14px;padding:15px 18px;margin-bottom:30px;}
+  .reassure svg{flex:none;width:20px;height:20px;fill:var(--terra);margin-top:1px;}
+  .reassure p{font-size:14px;line-height:1.55;color:var(--clove);margin:0;}
+  .reassure b{color:var(--sage-deep);}
 </style>
 </head>
 <body>
@@ -67,8 +71,8 @@
   <div class="fb-head">
     <span class="eyebrow">Aravind <span class="heart" style="display:inline-block;width:0.8em"><svg viewBox="0 0 24 24" width="0.8em" height="0.8em" aria-hidden="true" style="vertical-align:-0.12em;fill:var(--terra)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> Priyanka</span>
     <h1>Let's finish<span class="amp"> your</span> website</h1>
-    <p>This is for the two of you. We've pre-written a lot — most boxes can be left blank to keep our wording, so only fill what you'd like to change or add. There's a voice note at the end if you'd rather talk than type.</p>
-    <div class="mins">About 10 minutes · nothing is mandatory</div>
+    <p>This is for the two of you — and there's nothing to write "nicely." Rough notes, bullet points, even half-thoughts are exactly right; turning them into the words on the site is our job. We've pre-written most of it, so leave anything blank to keep our wording and just tell us what to change or add. Prefer talking? There's a voice note at the end.</p>
+    <div class="mins">A few minutes · nothing is mandatory · rough notes are perfect</div>
     <div class="who">
       <label><input type="radio" name="Filled by" value="Aravind" checked><span class="opt">I'm Aravind</span></label>
       <label><input type="radio" name="Filled by" value="Priyanka"><span class="opt">I'm Priyanka</span></label>
@@ -77,6 +81,11 @@
   </div>
 
   <form id="fb" class="card" novalidate>
+
+    <div class="reassure">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+      <p><b>You give the points — we write the copy.</b> Don't worry about phrasing, spelling or grammar; just share the facts and how you feel, however messy. The only thing worth getting exact is names &amp; titles. Everything else, we'll shape for you.</p>
+    </div>
 
     <!-- 01 DESIGN -->
     <div class="sec">
@@ -108,7 +117,7 @@
     <!-- 03 FAMILIES -->
     <div class="sec">
       <div class="sec-num"><span class="n">03</span><h2>Your families</h2></div>
-      <p class="hint">Exactly how you'd like everyone written — full names, with titles (Dr., Mr., Mrs., Late) where you'd like them. This is the part guests read most closely.</p>
+      <p class="hint">The one place worth being exact — just so we spell every name right. List them however's easiest, with titles (Dr., Mr., Mrs., Late) where you'd like them; we'll handle the formatting and layout.</p>
       <div class="side">
         <div class="side-h">Bride's side &mdash; Priyanka's family</div>
         <div class="field two">
@@ -116,7 +125,7 @@
           <div><label class="fl">Bride's mother — full name</label><input name="Bride mother" placeholder="e.g. Mrs. Lakshmi Ravi"></div>
         </div>
         <div class="field"><label class="fl">Bride's siblings</label>
-          <textarea name="Bride siblings" rows="3" placeholder="One per line, with relation (and spouse if married). e.g.&#10;Elder brother — Karthik (w/ Divya)&#10;Younger sister — Meera"></textarea></div>
+          <textarea name="Bride siblings" rows="3" placeholder="Just names and how they're related is plenty (add spouse if married). e.g.&#10;Elder brother — Karthik (w/ Divya)&#10;Younger sister — Meera"></textarea></div>
         <div class="field"><label class="fl">Anyone else to honour on the bride's side?</label>
           <textarea name="Bride family extra" rows="2" placeholder="Optional — grandparents, late parents, the wedding hosts, etc."></textarea></div>
       </div>
@@ -127,7 +136,7 @@
           <div><label class="fl">Groom's mother — full name</label><input name="Groom mother" placeholder="e.g. Mrs. …"></div>
         </div>
         <div class="field"><label class="fl">Groom's siblings</label>
-          <textarea name="Groom siblings" rows="3" placeholder="One per line, with relation (and spouse if married)."></textarea></div>
+          <textarea name="Groom siblings" rows="3" placeholder="Just names and how they're related is plenty (add spouse if married)."></textarea></div>
         <div class="field"><label class="fl">Anyone else to honour on the groom's side?</label>
           <textarea name="Groom family extra" rows="2" placeholder="Optional — grandparents, late parents, hosts, etc."></textarea></div>
       </div>
@@ -137,7 +146,7 @@
     <!-- 04 ABOUT -->
     <div class="sec">
       <div class="sec-num"><span class="n">04</span><h2>About the two of you</h2></div>
-      <p class="hint">A few warm lines each — we'll shape the wording. Both of you are presented as equals.</p>
+      <p class="hint">A few points about each of you is all we need — we'll shape the wording. Both of you are presented as equals.</p>
       <div class="field"><label class="fl">About Priyanka</label>
         <textarea name="Priyanka about" rows="3" placeholder="Qualifications (MBBS, MS/DGO…), where she practises, specialisation, and how she'd like to be introduced."></textarea></div>
       <div class="field"><label class="fl">About Aravind</label>
