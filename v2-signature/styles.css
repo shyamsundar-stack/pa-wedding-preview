@@ -17,10 +17,10 @@
 /* ---------- Tokens ---------- */
 :root{
   --ivory:#f5f0e6; --ivory-2:#fbf8f2; --paper:#efe9dd;
-  --sage:#8c9a7e; --sage-deep:#5f6a52; --mist:#cbd2c2;
+  --sage:#8c9a7e; --sage-deep:#455138; --mist:#cbd2c2;
   --terra:#be6a48; --terra-deep:#a4542f;
   --blush:#e9c9bc; --blush-soft:#f1dcd2;
-  --clove:#6e5a48; --ink:#42463c; --ink-soft:#5b5e51;
+  --clove:#5a4836; --ink:#2f322a; --ink-soft:#4c4f43;
   --line:rgba(110,90,72,.18);
   --shadow:0 18px 50px -28px rgba(60,55,40,.45);
   --maxw:1180px;
