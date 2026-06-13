@@ -75,10 +75,12 @@ const CONFIG = {
 
   // ---- FAQ accordion ----
   document.querySelectorAll('.faq button').forEach(btn => {
+    btn.setAttribute('aria-expanded', 'false');
     btn.addEventListener('click', () => {
       const item = btn.parentElement;
       const ans = item.querySelector('.ans');
       const open = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
       ans.style.maxHeight = open ? ans.scrollHeight + 'px' : '0';
     });
   });

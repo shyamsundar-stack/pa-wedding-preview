@@ -10,9 +10,7 @@
 @font-face{font-family:'Lora';font-style:italic;src:url('assets/fonts/Lora-Italic.ttf');font-display:swap;}
 @font-face{font-family:'Jura';font-weight:300;src:url('assets/fonts/Jura-Light.ttf');font-display:swap;}
 @font-face{font-family:'Jura';font-weight:500;src:url('assets/fonts/Jura-Medium.ttf');font-display:swap;}
-@font-face{font-family:'Outfit';src:url('assets/fonts/Outfit-Regular.ttf');font-display:swap;}
 @font-face{font-family:'Arsenal';src:url('assets/fonts/ArsenalSC-Regular.ttf');font-display:swap;}
-@font-face{font-family:'Script';src:url('assets/fonts/NothingYouCouldDo-Regular.ttf');font-display:swap;}
 
 /* ---------- Tokens ---------- */
 html{color-scheme:light}
@@ -81,7 +79,7 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .nav .nav-cta{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.18em;
   font-size:11px;border:1px solid var(--sage);color:var(--sage-deep);border-radius:30px;padding:9px 18px;}
 .nav .nav-cta:hover{background:var(--sage);color:var(--ivory);}
-.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;min-width:44px;min-height:44px;align-items:center;justify-content:center;}
 .burger span{width:24px;height:2px;background:var(--clove);border-radius:2px;transition:.3s;}
 
 /* ---------- Buttons ---------- */
@@ -225,8 +223,7 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
   letter-spacing:.18em;font-size:10.5px;color:var(--clove);margin-bottom:8px;}
 .field input,.field select,.field textarea{width:100%;font-family:var(--body);font-size:16px;color:var(--ink);
   background:var(--ivory);border:1px solid var(--line);border-radius:10px;padding:13px 15px;transition:.25s;}
-.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--sage);
-  box-shadow:0 0 0 3px rgba(140,154,126,.18);}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--sage);}
 .field.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .field.two>div{margin:0;}
 .seg{display:flex;gap:10px;}
@@ -350,8 +347,11 @@ body::after{content:"";position:fixed;inset:0;z-index:900;pointer-events:none;op
 .ev .card:active,.reg-card:active{transform:translateY(0);}
 
 /* Visible focus states (accessibility / Impeccable) */
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+
+a:focus-visible,button:focus-visible,.ev-card:focus-visible,.faq button:focus-visible,.pa-tap:focus-visible{
   outline:2px solid var(--terra);outline-offset:3px;border-radius:4px;}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible,.seg input:focus-visible + .opt{outline:2px solid var(--sage);outline-offset:2px;}
 
 /* Staggered, waterfall reveals (Taste §4 orchestration) */
 .tl .ev:nth-child(2){transition-delay:.07s}
