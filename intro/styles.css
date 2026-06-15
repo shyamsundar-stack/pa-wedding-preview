@@ -208,7 +208,14 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .live{text-align:center;background:linear-gradient(160deg,var(--sage-deep),#4e5743);color:var(--ivory);}
 .live .eyebrow{color:var(--blush);}
 .live h2.sec-title{color:var(--ivory-2);}
-.live .sec-lead{color:rgba(245,240,230,.8);}
+.live .sec-lead{color:rgba(245,240,230,.92);}
+/* dress-code per-event guide */
+.dress-guide{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
+.dress-guide .dg{flex:1 1 220px;max-width:320px;background:var(--ivory-2);border:1px solid var(--line);border-radius:14px;padding:28px 24px;text-align:center;}
+.dress-guide .dg-day{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.22em;font-size:11px;color:var(--terra);margin-bottom:10px;}
+.dress-guide .dg-what{font-family:var(--serif);font-size:clamp(20px,3vw,27px);color:var(--sage-deep);}
+/* gallery sub-titles (Engagement / Pre-Wedding) */
+.gal-title{font-family:var(--serif);font-weight:400;color:var(--sage-deep);font-size:clamp(22px,3.5vw,30px);text-align:center;margin-bottom:20px;}
 .live .pulse{display:inline-flex;align-items:center;gap:9px;font-family:var(--label);letter-spacing:.2em;
   text-transform:uppercase;font-size:11px;margin-top:24px;color:var(--blush);}
 .live .pulse .d{width:9px;height:9px;border-radius:50%;background:var(--terra);box-shadow:0 0 0 0 rgba(190,106,72,.7);animation:pl 1.8s infinite;}

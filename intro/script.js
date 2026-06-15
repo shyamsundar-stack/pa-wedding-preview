@@ -5,7 +5,7 @@
 const CONFIG = {
   // Wedding day / muhurtham — ISO format "YYYY-MM-DDTHH:MM:SS" (IST).
   // Set this to the real date and the countdown + labels update automatically.
-  weddingDateISO: "2026-07-12T07:00:00",    // Muhurtham — Sun 12 July 2026, 7:00 AM IST (countdown target)
+  weddingDateISO: "2026-07-12T10:30:00",    // Muhurtham — Sun 12 July 2026, 10:30 AM IST (countdown target)
   dateDisplay:    "12 July 2026",           // muhurtham day (used in countdown note)
   dateRange:      "11 & 12 July 2026",      // shown in the hero (Reception 11th eve + Muhurtham 12th morning)
   rsvpBy:         "30 June 2026",           // PLACEHOLDER — confirm RSVP-by date
