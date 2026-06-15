@@ -11,6 +11,9 @@
 @font-face{font-family:'Jura';font-weight:300;src:url('assets/fonts/Jura-Light.ttf');font-display:swap;}
 @font-face{font-family:'Jura';font-weight:500;src:url('assets/fonts/Jura-Medium.ttf');font-display:swap;}
 @font-face{font-family:'Arsenal';src:url('assets/fonts/ArsenalSC-Regular.ttf');font-display:swap;}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf');font-display:swap;}
+@font-face{font-family:'Cormorant';font-style:italic;src:url('assets/fonts/Cormorant-Italic.ttf');font-display:swap;}
+@font-face{font-family:'Pinyon';src:url('assets/fonts/PinyonScript.ttf');font-display:swap;}
 
 /* ---------- Tokens ---------- */
 html{color-scheme:light}
@@ -23,7 +26,7 @@ html{color-scheme:light}
   --line:rgba(110,90,72,.18);
   --shadow:0 18px 50px -28px rgba(60,55,40,.45);
   --maxw:1180px;
-  --serif:'Instr',Georgia,serif;
+  --serif:'Cormorant','Instr',Georgia,serif;
   --body:'Lora',Georgia,serif;
   --label:'Jura',sans-serif;
 }
@@ -216,6 +219,10 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .dress-guide .dg-what{font-family:var(--serif);font-size:clamp(20px,3vw,27px);color:var(--sage-deep);}
 /* gallery sub-titles (Engagement / Pre-Wedding) */
 .gal-title{font-family:var(--serif);font-weight:400;color:var(--sage-deep);font-size:clamp(22px,3.5vw,30px);text-align:center;margin-bottom:20px;}
+/* interlocking rings — subtle wedding motif */
+.hero .rings{display:block;margin:24px auto 0;width:58px;height:auto;opacity:.9;}
+.hero .rings .r1{stroke:var(--sage);}
+.hero .rings .r2{stroke:var(--terra);}
 .live .pulse{display:inline-flex;align-items:center;gap:9px;font-family:var(--label);letter-spacing:.2em;
   text-transform:uppercase;font-size:11px;margin-top:24px;color:var(--blush);}
 .live .pulse .d{width:9px;height:9px;border-radius:50%;background:var(--terra);box-shadow:0 0 0 0 rgba(190,106,72,.7);animation:pl 1.8s infinite;}
@@ -421,7 +428,11 @@ a:focus-visible,button:focus-visible,.ev-card:focus-visible,.faq button:focus-vi
 
 /* F2 — Replace the casual marker-style script (NothingYouCouldDo) with an
    elegant Instrument Serif italic signature; on-system, far more premium. */
-.script,.intro .names-script{font-family:'Instr',serif;font-style:italic;letter-spacing:.01em;}
+.script,.intro .names-script{font-family:'Pinyon','Cormorant',cursive;font-style:normal;letter-spacing:.01em;}
+/* couple's names — elegant wedding script */
+.display,.hero h1,.hero h1 .amp{font-family:'Pinyon','Cormorant',cursive;font-style:normal;line-height:1.04;letter-spacing:.01em;}
+.hero h1{font-size:clamp(64px,13vw,138px);}
+.hero h1 .amp{font-size:.5em;color:var(--terra);margin:2px 0;}
 .intro .names-script{font-size:clamp(34px,5.5vw,56px);}
 
 /* F3 — Touch targets: nav + footer links were <44px. Pad hit areas. */
