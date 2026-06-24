@@ -122,4 +122,45 @@ const CONFIG = {
       '<p style="font-style:italic;color:var(--ink-soft);margin-top:10px;">Your response has been noted with joy. ' +
       'We can\'t wait to celebrate with you.</p></div>';
   });
+
+  // ---- Leave a blessing (modal -> same Google Sheet, "Blessings" formType) ----
+  const blessModal = document.getElementById('blessModal');
+  const blessForm  = document.getElementById('blessForm');
+  if (blessModal && blessForm) {
+    const openBless  = () => { blessModal.hidden = false; document.body.style.overflow = 'hidden';
+      const t = blessForm.querySelector('textarea'); if (t) t.focus(); };
+    const closeBless = () => { blessModal.hidden = true; document.body.style.overflow = ''; };
+    const ob = document.getElementById('blessOpen');  if (ob) ob.addEventListener('click', openBless);
+    const cb = document.getElementById('blessClose'); if (cb) cb.addEventListener('click', closeBless);
+    blessModal.addEventListener('click', (e) => { if (e.target === blessModal) closeBless(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !blessModal.hidden) closeBless(); });
+    blessForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(blessForm).entries());
+      const msg = (data.message || '').trim();
+      if (!msg) { const t = blessForm.querySelector('textarea'); if (t) t.focus(); return; }
+      data.name = (data.name || '').trim() || 'A well-wisher';
+      data.message = msg;
+      data.formType = 'Blessings';
+      data._subject = 'Wedding blessing — ' + data.name;
+      const sb = blessForm.querySelector('button[type="submit"]');
+      if (sb) { sb.disabled = true; sb.textContent = 'Sending…'; }
+      try { await fetch(RSVP_SHEET, { method:'POST', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(data) }); } catch (_) {}
+      try { await fetch(RSVP_MAIL,  { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data) }); } catch (_) {}
+      // surface the blessing on the guestbook straight away
+      const grid = document.getElementById('blessGrid');
+      if (grid) {
+        const el = document.createElement('div');
+        el.className = 'bless';
+        el.innerHTML = '<div class="q">&ldquo;</div><p></p><div class="by"></div>';
+        el.querySelector('p').textContent = msg;
+        el.querySelector('.by').textContent = '— ' + data.name;
+        grid.insertBefore(el, grid.firstChild);
+      }
+      blessForm.innerHTML = '<div style="text-align:center;padding:18px 0;">' +
+        '<div style="font-family:\'Cormorant\',serif;font-size:30px;color:var(--sage-deep);">Thank you.</div>' +
+        '<p style="font-style:italic;color:var(--ink-soft);margin-top:8px;">Your blessing means the world to us.</p></div>';
+      setTimeout(closeBless, 2000);
+    });
+  }
 })();

@@ -297,6 +297,18 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .concierge .c a{font-size:15px;color:var(--ink-soft);}
 .concierge-note{text-align:center;max-width:54ch;margin:22px auto 0;}
 .concierge-note p{font-style:italic;color:var(--ink-soft);font-size:clamp(15px,2vw,17px);line-height:1.6;}
+/* ---- Leave-a-blessing modal ---- */
+.bless-modal{position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:rgba(38,40,33,.55);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
+  animation:blessfade .25s ease;}
+.bless-modal[hidden]{display:none;}
+@keyframes blessfade{from{opacity:0}to{opacity:1}}
+.bless-dialog{position:relative;width:100%;max-width:440px;background:var(--ivory);border:1px solid var(--line);
+  border-radius:18px;padding:36px 30px 30px;box-shadow:0 40px 90px -30px rgba(0,0,0,.55);}
+.bless-dialog h3{font-family:var(--serif);font-weight:400;font-size:clamp(25px,5vw,32px);color:var(--sage-deep);text-align:center;}
+.bless-sub{text-align:center;font-style:italic;color:var(--ink-soft);margin:8px auto 22px;max-width:34ch;line-height:1.5;}
+.bless-x{position:absolute;top:12px;right:15px;background:none;border:0;font-size:28px;line-height:1;color:var(--clove);cursor:pointer;padding:4px;}
+.bless-x:hover{color:var(--terra-deep);}
 
 /* ---------- Footer ---------- */
 footer{background:var(--sage-deep);color:var(--ivory);text-align:center;padding:70px 24px 40px;}

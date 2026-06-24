@@ -376,7 +376,20 @@
       <div class="bless reveal"><div class="q">&ldquo;</div><p>May your love only grow brighter with every year.</p><div class="by">— Family friend</div></div>
       <div class="bless reveal"><div class="q">&ldquo;</div><p>So happy for you both. Congratulations!</p><div class="by">— A cousin</div></div>
     </div>
-    <div class="center"><a href="#rsvp" class="btn btn-ghost">Leave a blessing</a></div>
+    <div class="center"><button type="button" class="btn btn-ghost" id="blessOpen">Leave a blessing</button></div>
+  </div>
+  <!-- Leave-a-blessing modal -->
+  <div class="bless-modal" id="blessModal" hidden>
+    <div class="bless-dialog" role="dialog" aria-modal="true" aria-labelledby="blessTitle">
+      <button type="button" class="bless-x" id="blessClose" aria-label="Close">&times;</button>
+      <h3 id="blessTitle">Leave a blessing</h3>
+      <p class="bless-sub">Share a wish for Aravind &amp; Priyanka — it goes straight to the couple.</p>
+      <form id="blessForm" novalidate>
+        <div class="field"><label>Your name</label><input name="name" placeholder="Your name"></div>
+        <div class="field"><label>Your blessing</label><textarea name="message" rows="4" required placeholder="Wishing you a lifetime of love and laughter…"></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send blessing</button>
+      </form>
+    </div>
   </div>
 </section>
 
