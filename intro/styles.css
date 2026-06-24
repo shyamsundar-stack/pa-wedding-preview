@@ -89,7 +89,9 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--label);font-weight:500;
   text-transform:uppercase;letter-spacing:.2em;font-size:12px;cursor:pointer;
   padding:15px 30px;border-radius:34px;border:1px solid transparent;transition:.3s;}
-.btn-primary{background:var(--terra);color:#fff;box-shadow:0 12px 26px -14px rgba(164,84,47,.7);}
+.btn-primary{background:var(--terra-deep);color:#fff;box-shadow:0 12px 26px -14px rgba(164,84,47,.7);}
+/* AA contrast: terracotta #be6a48 fails AA on ivory (~3.4:1) — deepen micro-labels to terra-deep */
+.ev .when,.fam-card .role,.ev-label,.dress-guide .dg-day,.bless .by,.concierge .c .role{color:var(--terra-deep);}
 .btn-primary:hover{background:var(--terra-deep);transform:translateY(-2px);}
 .btn-ghost{border-color:var(--sage);color:var(--sage-deep);background:transparent;}
 .btn-ghost:hover{background:var(--sage);color:#fff;}
@@ -200,10 +202,17 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .stay .s p{font-size:15px;color:var(--ink-soft);}
 
 /* ---------- Gallery ---------- */
-.gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:14px;}
+/* Masonry — keeps every photo's true aspect (engagement landscape + pre-wedding portrait), no crop, no stretch */
+.gal{column-count:3;column-gap:14px;}
+.gal .gcell{display:block;width:100%;margin:0 0 14px;break-inside:avoid;-webkit-column-break-inside:avoid;
+  border-radius:12px;overflow:hidden;position:relative;line-height:0;
+  background:linear-gradient(150deg,var(--blush-soft),var(--mist));box-shadow:0 12px 30px -24px rgba(60,55,40,.55);}
+.gal .gcell img{width:100%;height:auto;display:block;border-radius:12px;transition:transform .5s ease,filter .5s ease;}
+.gal .gcell:hover img{transform:scale(1.035);}
+.gal .gcell:focus-visible{outline:2px solid var(--terra);outline-offset:3px;}
+/* legacy placeholder cells (no longer in markup) */
 .gal .cell{border-radius:12px;overflow:hidden;position:relative;
   background:linear-gradient(150deg,var(--blush-soft),var(--mist));display:flex;align-items:center;justify-content:center;}
-.gal .cell.tall{grid-row:span 2;}
 .gal .cell .lbl{font-family:var(--label);letter-spacing:.25em;text-transform:uppercase;font-size:10px;color:var(--sage-deep);opacity:.7;}
 .gal-note{text-align:center;margin-top:26px;font-style:italic;color:var(--ink-soft);}
 
@@ -286,6 +295,8 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .concierge .c .role{font-family:var(--label);text-transform:uppercase;letter-spacing:.2em;font-size:10px;color:var(--terra);}
 .concierge .c h4{font-family:var(--serif);font-weight:400;font-size:21px;color:var(--sage-deep);margin:6px 0 2px;}
 .concierge .c a{font-size:15px;color:var(--ink-soft);}
+.concierge-note{text-align:center;max-width:54ch;margin:22px auto 0;}
+.concierge-note p{font-style:italic;color:var(--ink-soft);font-size:clamp(15px,2vw,17px);line-height:1.6;}
 
 /* ---------- Footer ---------- */
 footer{background:var(--sage-deep);color:var(--ivory);text-align:center;padding:70px 24px 40px;}
@@ -325,7 +336,7 @@ footer .fine{font-size:12px;color:rgba(245,240,230,.5);margin-top:20px;}
   .story-grid,.venue-grid{grid-template-columns:1fr;}
   .story-art{max-width:420px;margin:0 auto;width:100%;}
   .reg-grid,.bless-grid,.concierge,.stay{grid-template-columns:1fr;}
-  .gal{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
+  .gal{column-count:2;}
 }
 @media(max-width:560px){
   body{font-size:16px;}

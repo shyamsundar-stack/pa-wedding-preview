@@ -10,12 +10,12 @@
 #gallery .gal .gcell{display:block;break-inside:avoid;margin:0 0 14px;position:relative;
   border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--ivory-2);
   cursor:zoom-in;outline-offset:3px;}
-#gallery .gal .gcell img{width:100%;display:block;transition:transform .6s ease,filter .6s ease;}
+#gallery .gal .gcell img{width:100%;height:auto;display:block;transition:transform .6s ease,filter .6s ease;}
 #gallery .gal .gcell:hover img{transform:scale(1.045);filter:brightness(1.03);}
 #gallery .gal .gcell::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(180deg,transparent 58%,rgba(66,70,60,.22));opacity:0;transition:opacity .35s ease;}
 #gallery .gal .gcell:hover::after{opacity:1;}
-@media(max-width:1024px){#gallery .gal{column-count:3;}}
+@media(max-width:900px){#gallery .gal{column-count:3;}}
 @media(max-width:680px){#gallery .gal{column-count:2;column-gap:10px;}#gallery .gal .gcell{margin-bottom:10px;}}
 @media(prefers-reduced-motion:reduce){#gallery .gal .gcell img{transition:none;}}
 

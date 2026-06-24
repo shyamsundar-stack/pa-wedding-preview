@@ -20,7 +20,9 @@
   var hero = document.querySelector('.hero');
   var bg   = document.querySelector('.hero-bg');
   if (hero && bg) {
-    var reveal = function () { hero.classList.add('has-video'); };
+    // reduced motion: don't autoplay the couple clip — hold its poster still
+    if (RM) { bg.removeAttribute('autoplay'); bg.removeAttribute('loop'); }
+    var reveal = function () { hero.classList.add('has-video'); if (RM) { try { bg.pause(); } catch (e) {} } };
     if (bg.readyState >= 2) reveal();
     else bg.addEventListener('loadeddata', reveal, { once: true });
     bg.addEventListener('error', function () {}, { once: true }); // no file → hero as designed

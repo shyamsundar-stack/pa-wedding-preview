@@ -9,16 +9,34 @@
      land straight on the hero).
    ===================================================================== */
 
-/* ---------- Hero looped-video background (separate file, drop in later) ---------- */
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  z-index:0;opacity:0;transition:opacity 1.2s ease;pointer-events:none;}
+/* ---------- Hero looped couple video ----------
+   The clip is landscape (1600x900). Show the WHOLE couple with object-fit:contain
+   over a blurred still fill, so a portrait phone never crops to the gap between them
+   and desktop never over-zooms. A real dark scrim keeps the names readable. */
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+  z-index:1;opacity:0;transition:opacity 1.2s ease;pointer-events:none;}
 .hero.has-video .hero-bg{opacity:1;}
-.hero-bg-tint{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;
+.hero-bg-blur{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;
+  background:#241f18 url('assets/img/hero-poster.jpg') center/cover no-repeat;
+  filter:blur(30px) brightness(.74) saturate(1.05);transform:scale(1.22);
+  transition:opacity 1.2s ease;}
+.hero.has-video .hero-bg-blur{opacity:1;}
+.hero-bg-tint{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;
   transition:opacity 1.2s ease;
-  background:linear-gradient(180deg,
-    rgba(66,70,60,.30),rgba(66,70,60,.10) 40%,rgba(245,240,230,.55));}
+  background:radial-gradient(135% 100% at 50% 40%,rgba(22,20,14,.34),rgba(22,20,14,.68));}
 .hero.has-video .hero-bg-tint{opacity:1;}
-.hero.has-video .hero-inner{text-shadow:0 1px 28px rgba(66,70,60,.28);}
+/* keep hero text above the scrim */
+.hero .hero-inner{position:relative;z-index:5;}
+/* over the video: light names + a tight dark halo that defines each glyph */
+.hero.has-video .hero-inner{text-shadow:0 1px 2px rgba(16,14,9,.62),0 2px 22px rgba(16,14,9,.5);}
+.hero.has-video h1.display{color:#f7f2e8;}
+.hero.has-video h1.display .amp{color:#eccfa6;}
+.hero.has-video .eyebrow,.hero.has-video .tag,.hero.has-video .meta{color:#f4ede2;}
+.hero.has-video .meta .sep{background:#eccfa6;}
+.hero.has-video .rings .r1{stroke:#e2e8da;}
+.hero.has-video .rings .r2{stroke:#eccfa6;}
+.hero.has-video .scrollcue{color:#f4ede2;}
+.hero.has-video .sprig{opacity:0;}
 
 /* ---------- Intro overlay ---------- */
 body.pa-lock{overflow:hidden;}
