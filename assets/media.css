@@ -4,7 +4,9 @@
    ============================================================ */
 
 /* ---- Masonry gallery ---- */
-#gallery .gal{display:block;column-count:4;column-gap:14px;}
+/* always visible — the block is taller than the viewport, so the scroll-reveal
+   threshold would never fire and leave it stuck at opacity 0 */
+#gallery .gal{display:block;column-count:4;column-gap:14px;opacity:1!important;transform:none!important;}
 #gallery .gal .gcell{display:block;break-inside:avoid;margin:0 0 14px;position:relative;
   border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--ivory-2);
   cursor:zoom-in;outline-offset:3px;}
