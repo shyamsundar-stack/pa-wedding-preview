@@ -10,20 +10,15 @@
    ===================================================================== */
 
 /* ---------- Hero looped couple video ----------
-   The clip is landscape (1600x900). Show the WHOLE couple with object-fit:contain
-   over a blurred still fill, so a portrait phone never crops to the gap between them
-   and desktop never over-zooms. A real dark scrim keeps the names readable. */
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+   Desktop: the landscape clip fills with object-fit:cover (no empty band).
+   Mobile: intro.js swaps in a portrait couple slideshow (assets/video/hero-mobile.mp4)
+   so the phone fills edge-to-edge with the couple. A dark scrim keeps names readable. */
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;
   z-index:1;opacity:0;transition:opacity 1.2s ease;pointer-events:none;}
 .hero.has-video .hero-bg{opacity:1;}
-.hero-bg-blur{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;
-  background:#241f18 url('assets/img/hero-poster.jpg') center/cover no-repeat;
-  filter:blur(30px) brightness(.74) saturate(1.05);transform:scale(1.22);
-  transition:opacity 1.2s ease;}
-.hero.has-video .hero-bg-blur{opacity:1;}
 .hero-bg-tint{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;
   transition:opacity 1.2s ease;
-  background:radial-gradient(135% 100% at 50% 40%,rgba(22,20,14,.34),rgba(22,20,14,.68));}
+  background:radial-gradient(135% 100% at 50% 40%,rgba(22,20,14,.44),rgba(22,20,14,.78));}
 .hero.has-video .hero-bg-tint{opacity:1;}
 /* keep hero text above the scrim */
 .hero .hero-inner{position:relative;z-index:5;}

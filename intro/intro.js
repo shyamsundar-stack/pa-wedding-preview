@@ -20,6 +20,13 @@
   var hero = document.querySelector('.hero');
   var bg   = document.querySelector('.hero-bg');
   if (hero && bg) {
+    // phones get a portrait couple slideshow that fills the screen edge-to-edge
+    if (window.matchMedia && matchMedia('(max-width: 768px)').matches) {
+      var hsrc = bg.querySelector('source');
+      if (hsrc) hsrc.src = 'assets/video/hero-mobile.mp4';
+      bg.setAttribute('poster', 'assets/img/hero-poster-m.jpg');
+      bg.load();
+    }
     // reduced motion: don't autoplay the couple clip — hold its poster still
     if (RM) { bg.removeAttribute('autoplay'); bg.removeAttribute('loop'); }
     var reveal = function () { hero.classList.add('has-video'); if (RM) { try { bg.pause(); } catch (e) {} } };
