@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Pinyon';src:url('assets/fonts/PinyonScript.ttf')}
+@font-face{font-family:'Cormorant';src:url('assets/fonts/Cormorant.ttf')}
+@font-face{font-family:'Jura';font-weight:500;src:url('assets/fonts/Jura-Medium.ttf')}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{position:relative;font-family:'Cormorant',serif;background:#0c0c0c}
+/* the pre-edited B&W thumbnail is already exactly 1200x630 */
+.bg{position:absolute;inset:0;background:url('assets/img/share-bg.jpg') center center/cover no-repeat}
+/* bottom lower-third scrim — keeps both faces (center) clear, darkens only the base for legible names */
+.scrim{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,0) 44%,rgba(8,8,8,.42) 66%,rgba(8,8,8,.82) 100%)}
+.frame{position:absolute;inset:24px;border:1px solid rgba(245,240,230,.30);border-radius:5px;pointer-events:none}
+.c{position:absolute;left:0;right:0;bottom:46px;display:flex;flex-direction:column;align-items:center;text-align:center;color:#f7f2e8}
+.names{font-family:'Pinyon',cursive;font-weight:400;font-size:104px;line-height:1;text-shadow:0 2px 26px rgba(0,0,0,.55)}
+.names .amp{color:#eccfa6;font-size:.52em;margin:0 8px;vertical-align:.10em}
+.rule{display:flex;align-items:center;gap:13px;margin-top:14px}
+.rule .ln{width:54px;height:1px;background:rgba(245,240,230,.55)}
+.rule .dot{width:5px;height:5px;border-radius:50%;background:#eccfa6}
+.meta{font-family:'Jura',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.30em;font-size:21px;margin-top:13px;color:#f1e9dc;text-shadow:0 1px 12px rgba(0,0,0,.6)}
+</style></head>
+<body>
+<div class="bg"></div><div class="scrim"></div><div class="frame"></div>
+<div class="c">
+  <div class="names">Aravind<span class="amp">&amp;</span>Priyanka</div>
+  <div class="rule"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+  <div class="meta">11 &amp; 12 July 2026 &nbsp;·&nbsp; Chennai</div>
+</div>
+</body></html>
