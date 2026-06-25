@@ -114,7 +114,7 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .hero .tag{font-style:italic;color:var(--ink-soft);font-size:clamp(17px,2.4vw,22px);margin-top:26px;}
 .hero .meta{display:flex;gap:18px;align-items:center;justify-content:center;flex-wrap:wrap;
   margin-top:30px;font-family:var(--label);font-weight:500;text-transform:uppercase;
-  letter-spacing:.26em;font-size:12px;color:var(--clove);}
+  letter-spacing:.2em;font-size:15px;color:var(--clove);}
 .hero .meta .sep{width:5px;height:5px;border-radius:50%;background:var(--terra);}
 .hero .cta-row{margin-top:42px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
@@ -154,9 +154,10 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .fam-card{text-align:center;padding:44px 30px;background:var(--ivory-2);border:1px solid var(--line);border-radius:14px;}
 .fam-card .role{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.32em;font-size:11px;color:var(--terra);}
 .fam-card h3{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4vw,40px);color:var(--sage-deep);margin:10px 0 6px;}
-.fam-card .sub{font-style:italic;color:var(--ink-soft);margin-bottom:20px;}
+.fam-card .sub{font-style:italic;color:var(--clove);font-size:17px;margin-bottom:20px;}
 .fam-card ul{list-style:none;}
-.fam-card li{padding:7px 0;border-top:1px solid var(--line);}
+/* siblings read quieter than the parents line (smaller + softer) so parents lead */
+.fam-card li{padding:7px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--ink-soft);}
 .fam-card li:first-child{border-top:0;}
 
 /* ---------- Events / timeline ---------- */
@@ -232,6 +233,9 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .hero .rings{display:block;margin:24px auto 0;width:58px;height:auto;opacity:.9;}
 .hero .rings .r1{stroke:var(--sage);}
 .hero .rings .r2{stroke:var(--terra);}
+/* a single solitaire set on the gold ring */
+.hero .rings .sol-gem{fill:#fbf8f2;stroke:var(--terra);stroke-width:.7;}
+.hero .rings .sol-fac{fill:none;stroke:var(--terra);stroke-width:.45;opacity:.6;}
 .live .pulse{display:inline-flex;align-items:center;gap:9px;font-family:var(--label);letter-spacing:.2em;
   text-transform:uppercase;font-size:11px;margin-top:24px;color:var(--blush);}
 .live .pulse .d{width:9px;height:9px;border-radius:50%;background:var(--terra);box-shadow:0 0 0 0 rgba(190,106,72,.7);animation:pl 1.8s infinite;}
@@ -315,11 +319,18 @@ footer{background:var(--sage-deep);color:var(--ivory);text-align:center;padding:
 footer .mono{font-family:'Arsenal';font-size:30px;letter-spacing:.1em;color:var(--ivory-2);}
 footer .mono .heart{color:var(--blush);}
 footer .tag{font-style:italic;color:rgba(245,240,230,.75);margin:12px 0 22px;}
-footer .hash{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.3em;font-size:12px;color:var(--blush);}
+footer .hash{font-family:var(--label);font-weight:500;letter-spacing:.14em;font-size:13px;color:var(--blush);}
 footer .fnav{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:26px 0;}
 footer .fnav a{font-family:var(--label);text-transform:uppercase;letter-spacing:.16em;font-size:10.5px;color:rgba(245,240,230,.7);}
 footer .fnav a:hover{color:var(--ivory);}
 footer .fine{font-size:12px;color:rgba(245,240,230,.5);margin-top:20px;}
+
+/* ---------- Event credit (Wedding Chemistry) ---------- */
+.event-credit{background:var(--ivory);text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:11px;padding:30px 24px 40px;}
+.event-credit .ec-by{font-family:var(--label);font-weight:500;text-transform:uppercase;
+  letter-spacing:.34em;font-size:10px;color:var(--ink-soft);opacity:.72;}
+.event-credit .ec-logo{width:150px;height:auto;opacity:.92;}
 
 /* ---------- placeholder chip ---------- */
 .ph-tag{display:inline-block;font-family:var(--label);font-weight:500;text-transform:uppercase;
@@ -354,7 +365,7 @@ footer .fine{font-size:12px;color:rgba(245,240,230,.5);margin-top:20px;}
   body{font-size:16px;}
   .fam-grid{grid-template-columns:1fr;}
   .field.two{grid-template-columns:1fr;}
-  .hero .meta{font-size:10.5px;letter-spacing:.18em;flex-direction:column;gap:8px;}
+  .hero .meta{font-size:13px;letter-spacing:.16em;flex-direction:column;gap:8px;}
   .hero .meta .sep{display:none;}
   .cd-grid{gap:14px;}
   .cd-cell{min-width:64px;}

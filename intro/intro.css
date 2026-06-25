@@ -30,6 +30,8 @@
 .hero.has-video .meta .sep{background:#eccfa6;}
 .hero.has-video .rings .r1{stroke:#e2e8da;}
 .hero.has-video .rings .r2{stroke:#eccfa6;}
+.hero.has-video .rings .sol-gem{fill:#fff7ec;stroke:#eccfa6;}
+.hero.has-video .rings .sol-fac{stroke:#eccfa6;}
 .hero.has-video .scrollcue{color:#f4ede2;}
 .hero.has-video .sprig{opacity:0;}
 
