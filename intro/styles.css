@@ -140,6 +140,11 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 .cd-cell .lab{font-family:var(--label);font-weight:500;text-transform:uppercase;letter-spacing:.3em;
   font-size:11px;color:var(--clove);margin-top:8px;}
 .cd-date{margin-top:34px;font-style:italic;color:var(--ink-soft);}
+.countdown [hidden]{display:none!important;}
+.countdown .cd-live{margin-top:22px;}
+.countdown .pulse{display:inline-flex;align-items:center;gap:9px;font-family:var(--label);font-weight:500;letter-spacing:.2em;text-transform:uppercase;font-size:11px;color:var(--terra-deep);}
+.countdown .pulse .d{width:9px;height:9px;border-radius:50%;background:var(--terra);box-shadow:0 0 0 0 rgba(190,106,72,.7);animation:pl 1.8s infinite;}
+.countdown .cd-live .btn{margin-top:20px;}
 
 /* ---------- Story ---------- */
 .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,6vw,80px);align-items:center;}
@@ -494,7 +499,7 @@ footer .fnav a{padding:8px 4px;display:inline-block;}
    frontend-design (anthropics/skills) + awesome-claude-design/warm refinements
    ========================================================================= */
 /* Tabular numerals so the countdown doesn't jitter as digits change */
-.cd-cell .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+.cd-cell .num{font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum" 1,"lnum" 1;}
 /* Typographic niceties: balanced headings, pretty body reflow */
 h1,h2,h3,h4,.display,.sec-title,.boardname{text-wrap:balance;}
 p,.philo,.sec-lead,.story-copy p,.ev-val{text-wrap:pretty;}

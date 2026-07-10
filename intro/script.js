@@ -3,13 +3,16 @@
    ── EDIT ONLY THIS CONFIG BLOCK to drop in the real details ──────────────
    ========================================================================= */
 const CONFIG = {
-  // Wedding day / muhurtham — ISO format "YYYY-MM-DDTHH:MM:SS" (IST).
-  // Set this to the real date and the countdown + labels update automatically.
-  weddingDateISO: "2026-07-12T10:30:00",    // Muhurtham — Sun 12 July 2026, 10:30 AM IST (countdown target)
-  dateDisplay:    "12 July 2026",           // muhurtham day (used in countdown note)
-  dateRange:      "11 & 12 July 2026",      // shown in the hero (Reception 11th eve + Muhurtham 12th morning)
-  rsvpBy:         "30 June 2026",           // PLACEHOLDER — confirm RSVP-by date
-  liveStreamURL:  "",            // e.g. "https://youtube.com/live/xxxx"
+  // Wedding-weekend schedule (IST; the +05:30 keeps countdowns correct for guests abroad).
+  // The countdown section walks through these stages automatically, no reload needed.
+  receptionISO:   "2026-07-11T18:30:00+05:30", // Reception begins — countdown #1 target
+  cdSwapISO:      "2026-07-11T22:30:00+05:30", // 10:30 PM — switch to the muhurtham countdown
+  streamDay2ISO:  "2026-07-12T06:00:00+05:30", // wedding-day stream starts (morning rituals)
+  muhurthamISO:   "2026-07-12T10:30:00+05:30", // Muhurtham — countdown #2 target
+  recordingsISO:  "2026-07-12T13:00:00+05:30", // celebrations over — offer the recordings
+  dateRange:      "11 & 12 July 2026",         // shown in the hero
+  rsvpBy:         "30 June 2026",
+  liveStreamURL:  "",            // unused — streams are embedded in the Watch Live section
 };
 /* ====================== (no need to edit below) ========================== */
 
@@ -40,32 +43,73 @@ const CONFIG = {
   burger.addEventListener('click', () => menu.classList.toggle('open'));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
 
-  // ---- Countdown ----
+  // ---- Countdown (staged: reception → live → muhurtham → live → recordings) ----
   const pad = n => String(n).padStart(2, '0');
   const cd = {
     d: document.getElementById('cd-d'), h: document.getElementById('cd-h'),
     m: document.getElementById('cd-m'), s: document.getElementById('cd-s'),
-    note: document.getElementById('cd-date')
+    grid: document.getElementById('cd'), note: document.getElementById('cd-date'),
+    eyebrow: document.getElementById('cd-eyebrow'), live: document.getElementById('cd-live'),
+    pulse: document.getElementById('cd-pulse'), pulseLabel: document.getElementById('cd-live-label'),
+    btn: document.getElementById('cd-live-btn')
   };
-  const target = CONFIG.weddingDateISO ? new Date(CONFIG.weddingDateISO) : null;
+  const T = {
+    reception:  new Date(CONFIG.receptionISO),
+    swap:       new Date(CONFIG.cdSwapISO),
+    stream2:    new Date(CONFIG.streamDay2ISO),
+    muhurtham:  new Date(CONFIG.muhurthamISO),
+    recordings: new Date(CONFIG.recordingsISO)
+  };
 
-  function tick() {
-    if (!target || isNaN(target)) { return; } // leave placeholders until date is set
-    const now = new Date();
-    let diff = Math.floor((target - now) / 1000);
-    if (diff <= 0) {
-      cd.d.textContent = cd.h.textContent = cd.m.textContent = cd.s.textContent = '00';
-      cd.note.innerHTML = 'Today is the day. &#10022;';
-      return;
-    }
+  function setCounts(target, now) {
+    let diff = Math.max(0, Math.floor((target - now) / 1000));
     const days = Math.floor(diff / 86400); diff %= 86400;
     const hrs = Math.floor(diff / 3600); diff %= 3600;
-    const mins = Math.floor(diff / 60); const secs = diff % 60;
-    cd.d.textContent = days; cd.h.textContent = pad(hrs);
-    cd.m.textContent = pad(mins); cd.s.textContent = pad(secs);
-    if (CONFIG.dateDisplay) cd.note.textContent = 'Until the muhurtham · ' + CONFIG.dateDisplay;
+    cd.d.textContent = pad(days); cd.h.textContent = pad(hrs);
+    cd.m.textContent = pad(Math.floor(diff / 60)); cd.s.textContent = pad(diff % 60);
   }
-  if (target) { tick(); setInterval(tick, 1000); }
+  function cdState(o) {
+    cd.grid.hidden = !o.grid;
+    cd.live.hidden = !o.live;
+    cd.pulse.hidden = !o.pulseText;
+    if (o.eyebrow) cd.eyebrow.textContent = o.eyebrow;
+    if (o.pulseText) cd.pulseLabel.textContent = o.pulseText;
+    if (o.btnText) cd.btn.textContent = o.btnText;
+    if (o.note) cd.note.textContent = o.note;
+  }
+
+  function tick() {
+    const now = window.PA_NOW ? new Date(window.PA_NOW) : new Date();
+    if (now < T.reception) {
+      setCounts(T.reception, now);
+      cdState({ grid: true, eyebrow: 'Counting the days',
+        note: 'Until the reception · Saturday 11 July, 6:30 PM' });
+    } else if (now < T.swap) {
+      cdState({ live: true, eyebrow: 'Happening now',
+        pulseText: 'The reception is live', btnText: 'Watch the reception live',
+        note: 'Muhurtham tomorrow · Sunday 12 July, 10:30 AM' });
+    } else if (now < T.muhurtham) {
+      setCounts(T.muhurtham, now);
+      const streaming = now >= T.stream2;
+      cdState({ grid: true, live: streaming, eyebrow: 'Counting the hours',
+        pulseText: streaming ? 'The wedding stream is live' : '',
+        btnText: 'Watch the morning rituals',
+        note: streaming ? 'Muhurtham at 10:30 AM — the stream is already live'
+                        : 'Until the muhurtham · Sunday 12 July, 10:30 AM' });
+    } else if (now < T.recordings) {
+      cdState({ live: true, eyebrow: 'Happening now',
+        pulseText: 'The wedding is live', btnText: 'Watch the muhurtham live',
+        note: 'Sunday 12 July · Muhurtham 10:30 AM – 12:00 PM' });
+    } else {
+      cdState({ live: true, eyebrow: 'The celebrations',
+        btnText: 'Watch the recordings',
+        note: 'Married on 12 July 2026 — relive both celebrations anytime' });
+    }
+  }
+  // guard: a stale cached index.html won't have the staged-countdown elements
+  if (cd.grid && cd.live && cd.pulse && cd.eyebrow && cd.pulseLabel && cd.btn) {
+    tick(); setInterval(tick, 1000);
+  }
 
   // ---- Reveal on scroll ----
   const io = new IntersectionObserver((entries) => {
