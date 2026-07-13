@@ -13,7 +13,7 @@
    Turn the intro off with PA_INTRO = false.
    ===================================================================== */
 (function () {
-  var PA_INTRO = true;
+  var PA_INTRO = false; // envelope invitation retired after the wedding (2026-07); flip to true to bring it back
   var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- hero looped-video background (separate, optional file) ---- */
