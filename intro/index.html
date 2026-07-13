@@ -104,6 +104,42 @@
   </div>
 </section>
 
+<!-- ============ WISHES WALL ============ -->
+<section id="blessings">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Guestbook</span>
+      <h2 class="sec-title">A Wall of Wishes</h2>
+      <p class="sec-lead" style="margin-top:16px;">Every blessing shared with us, pinned side by side — add yours to the wall.</p>
+      <div class="divider"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
+    </div>
+    <div class="wall-clip" id="wallClip">
+      <div class="bless-grid" id="blessGrid">
+        <div class="bless reveal"><div class="q">&ldquo;</div><p>Wishing you a lifetime of love and laughter.</p><div class="by">— Krishna</div></div>
+        <div class="bless reveal"><div class="q">&ldquo;</div><p>May your love only grow brighter with every year.</p><div class="by">— Sharadha</div></div>
+        <div class="bless reveal"><div class="q">&ldquo;</div><p>So happy for you both. Congratulations!</p><div class="by">— Shyam</div></div>
+      </div>
+    </div>
+    <div class="center wall-actions">
+      <button type="button" class="btn btn-soft" id="wallMore" hidden>Read all wishes</button>
+      <button type="button" class="btn btn-ghost" id="blessOpen">Add your wish to the wall</button>
+    </div>
+  </div>
+  <!-- Leave-a-blessing modal -->
+  <div class="bless-modal" id="blessModal" hidden>
+    <div class="bless-dialog" role="dialog" aria-modal="true" aria-labelledby="blessTitle">
+      <button type="button" class="bless-x" id="blessClose" aria-label="Close">&times;</button>
+      <h3 id="blessTitle">Add your wish</h3>
+      <p class="bless-sub">Share a wish for Aravind &amp; Priyanka — it goes up on the wall, and straight to their hearts.</p>
+      <form id="blessForm" novalidate>
+        <div class="field"><label>Your name</label><input name="name" placeholder="Your name"></div>
+        <div class="field"><label>Your blessing</label><textarea name="message" rows="4" required placeholder="Wishing you a lifetime of love and laughter…"></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send blessing</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <!-- ============ COUNTDOWN ============ -->
 <section class="countdown center" id="countdown">
   <div class="wrap reveal">
@@ -300,45 +336,14 @@
   </div>
 </section>
 
-<!-- ============ WISHES WALL ============ -->
-<section id="blessings">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <span class="eyebrow">The Guestbook</span>
-      <h2 class="sec-title">A Wall of Wishes</h2>
-      <p class="sec-lead" style="margin-top:16px;">Every blessing shared with us, pinned side by side — add yours to the wall.</p>
-      <div class="divider"><span class="ln"></span><span class="dot"></span><span class="ln"></span></div>
-    </div>
-    <div class="bless-grid" id="blessGrid">
-      <div class="bless reveal"><div class="q">&ldquo;</div><p>Wishing you a lifetime of love and laughter.</p><div class="by">— Krishna</div></div>
-      <div class="bless reveal"><div class="q">&ldquo;</div><p>May your love only grow brighter with every year.</p><div class="by">— Sharadha</div></div>
-      <div class="bless reveal"><div class="q">&ldquo;</div><p>So happy for you both. Congratulations!</p><div class="by">— Shyam</div></div>
-    </div>
-    <div class="center"><button type="button" class="btn btn-ghost" id="blessOpen">Add your wish to the wall</button></div>
-  </div>
-  <!-- Leave-a-blessing modal -->
-  <div class="bless-modal" id="blessModal" hidden>
-    <div class="bless-dialog" role="dialog" aria-modal="true" aria-labelledby="blessTitle">
-      <button type="button" class="bless-x" id="blessClose" aria-label="Close">&times;</button>
-      <h3 id="blessTitle">Add your wish</h3>
-      <p class="bless-sub">Share a wish for Aravind &amp; Priyanka — it goes up on the wall, and straight to their hearts.</p>
-      <form id="blessForm" novalidate>
-        <div class="field"><label>Your name</label><input name="name" placeholder="Your name"></div>
-        <div class="field"><label>Your blessing</label><textarea name="message" rows="4" required placeholder="Wishing you a lifetime of love and laughter…"></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send blessing</button>
-      </form>
-    </div>
-  </div>
-</section>
-
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="mono">Aravind <span class="heart"><svg viewBox="0 0 24 24" width="0.72em" height="0.72em" aria-hidden="true" style="vertical-align:-0.1em;fill:var(--terra)"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span> Priyanka</div>
   <p class="tag">where two worlds became one</p>
   <div class="hash">#PriDestinedForAravind</div>
   <div class="fnav">
-    <a href="#story">Story</a><a href="#events">Celebrations</a>
-    <a href="#live">Films</a><a href="#blessings">Wishes</a>
+    <a href="#blessings">Wishes</a><a href="#story">Story</a>
+    <a href="#events">Celebrations</a><a href="#live">Films</a>
   </div>
   <p class="fine">Married at the Mayor Ramanathan Centre, Chennai &nbsp;·&nbsp; 12 July 2026</p>
 </footer>

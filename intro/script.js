@@ -65,7 +65,7 @@ const CONFIG = {
         const grid = document.getElementById('blessGrid');
         if (!grid) return;
         grid.innerHTML = '';
-        list.slice(-80).reverse().forEach(w => {   // newest first, latest 80
+        list.slice(-200).reverse().forEach(w => {   // newest first, latest 200
           const el = document.createElement('div');
           el.className = 'bless';
           el.innerHTML = '<div class="q">&ldquo;</div><p></p><div class="by"></div>';
@@ -73,7 +73,28 @@ const CONFIG = {
           el.querySelector('.by').textContent = '— ' + (String(w.name || '').trim() || 'A well-wisher').slice(0, 40);
           grid.appendChild(el);
         });
+        wallFit();
       }).catch(() => {});
+  }
+
+  // ---- Wall clamp: compact until "Read all wishes" ----
+  const wallClip = document.getElementById('wallClip');
+  const wallMore = document.getElementById('wallMore');
+  function wallFit() {
+    if (!wallClip || !wallMore) return;
+    const open = wallClip.classList.contains('open');
+    const overflows = wallClip.scrollHeight > wallClip.clientHeight + 24;
+    wallMore.hidden = !open && !overflows;
+  }
+  if (wallClip && wallMore) {
+    wallMore.addEventListener('click', () => {
+      const open = wallClip.classList.toggle('open');
+      wallMore.textContent = open ? 'Show fewer wishes' : 'Read all wishes';
+      if (!open) document.getElementById('blessings').scrollIntoView({ behavior: 'smooth' });
+      wallFit();
+    });
+    wallFit();
+    window.addEventListener('resize', wallFit);
   }
 
   // ---- Leave a blessing (modal -> same Google Sheet, "Blessings" formType) ----
@@ -109,6 +130,7 @@ const CONFIG = {
         el.querySelector('p').textContent = msg;
         el.querySelector('.by').textContent = '— ' + data.name;
         grid.insertBefore(el, grid.firstChild);
+        wallFit();
       }
       blessForm.innerHTML = '<div style="text-align:center;padding:18px 0;">' +
         '<div style="font-family:\'Cormorant\',serif;font-size:30px;color:var(--sage-deep);">Thank you.</div>' +

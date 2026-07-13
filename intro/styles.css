@@ -283,6 +283,12 @@ header.nav.solid{background:rgba(245,240,230,.92);backdrop-filter:blur(10px);
 
 /* ---------- Blessings ---------- */
 /* Wishes wall — mobile-first masonry collage */
+.wall-clip{position:relative;max-height:620px;overflow:hidden;}
+.wall-clip::after{content:"";position:absolute;left:0;right:0;bottom:0;height:110px;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(245,240,230,0),var(--ivory));transition:opacity .3s;}
+.wall-clip.open{max-height:none;}
+.wall-clip.open::after{opacity:0;}
+.wall-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:6px;}
 .bless-grid{columns:2;column-gap:14px;max-width:980px;margin:0 auto 34px;}
 @media (min-width:720px){.bless-grid{columns:3;column-gap:18px;}}
 .bless{background:var(--ivory-2);border:1px solid var(--line);border-radius:14px;padding:26px;position:relative;
