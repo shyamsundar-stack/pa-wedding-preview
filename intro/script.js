@@ -54,7 +54,7 @@ const CONFIG = {
   // ---- Wishes wall: live feed from the Google Sheet (Apps Script doGet) ----
   // Paste the same /exec URL into WISHES_FEED once the doGet snippet is deployed;
   // until then the wall shows the seeded wishes plus anything sent this visit.
-  const WISHES_FEED = "";
+  const WISHES_FEED = "https://script.google.com/macros/s/AKfycbyK7hBn96P5wy4Oz3Wwg1rKRTpNnC0qNGZ6Aq8FcLIuDBOuDRJfAcuw2__2CmzMOoGhcQ/exec";
   if (WISHES_FEED) {
     fetch(WISHES_FEED + '?list=blessings')
       .then(r => r.json())
